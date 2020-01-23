@@ -1,0 +1,23 @@
+{
+  "name": "tinfoil-hat",
+  "version": "1.0.0",
+  "description": "Track your representatives and their voting history",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boundsalexis/tinfoil-hat.git"
+  },
+  "keywords": [
+    "politics"
+  ],
+  "author": "election",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boundsalexis/tinfoil-hat/issues"
+  },
+  "homepage": "https://github.com/boundsalexis/tinfoil-hat#readme"
+}
