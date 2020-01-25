@@ -11,7 +11,7 @@ module.exports = function(app) {
 
     app.get("/search/:congress", function(req,res){
         let search =req.params.congress;
-        console.log(search);
+       
         if (search ==="senate"){
             res.render("searchSenate");
         }

@@ -13,7 +13,6 @@ app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-require("./routes/api-routes.js")(app);
 
 var db = require("./models");
 ///routes variable and sequelize???
