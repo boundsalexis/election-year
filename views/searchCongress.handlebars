@@ -1,0 +1,71 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="../public/assets/img/politicalicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Saved Searches</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron">
+  <h1 class="display-4">Search the entire Congress</h1>
+  {{!-- <p class="lead">Search by</p> --}}
+  <form>
+  <hr class="my-4">
+ <div class="form-group">
+    <label for="byParty">Search by party:</label>
+   <select class="form-control" id="byParty">
+       <option style="display:none;"></option>
+      <option>Democrats</option>
+      <option>Republicans</option>      
+      <option>Independents</option>
+      </select>
+  </div>
+   <div class="form-group">
+    <label for="byState">Search by state:</label>
+   <select class="form-control" id="byState">
+       <option style="display:none;"></option>
+      <option>CA</option>
+      <option>the</option>      
+      <option>rest of the states</option>
+      </select>
+  </div>
+     <div class="form-group">
+    <label for="byGender">Search by gender:</label>
+   <select class="form-control" id="byGender">
+       <option style="display:none;"></option>
+      <option>Male</option>
+      <option>Female</option>      
+      </select>
+     
+  </div>
+ <div class="form-group">
+    <label for="byname">Search by name:</label>
+    <input type="email" class="form-control" id="byname" placeholder="FirstName LastName">
+  </div>
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="createQuery">Search</button>
+{{!-- the idea being that they can insert as many specifications into one table, so all democratic female representatives from ohio, or simply all female reps depending on what they select in the inputs --}}
+{{!-- open to adding search buttons on each line --}}
+<hr>
+{{!-- this would bring p the complete table --}}
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="CompleteList">I want to see them all!</button>
+  </form>
+
+{{!-- append table or append cards........ --}}
+<div id="table">
+{{!-- issue with table would be how to handle them clicking on the name in the table and pulling up that senators specifics name --}}
+</div>
+
+</div>
