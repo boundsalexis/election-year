@@ -18,6 +18,7 @@ require("./routes/api-routes.js")(app);
 var db = require("./models");
 ///routes variable and sequelize???
 console.log("REQUIRING TO POPULATE");
+// comment out to prevent table pop each time when running
 require("./db/populateDB")();
 
 db.sequelize.sync().then(function(){
