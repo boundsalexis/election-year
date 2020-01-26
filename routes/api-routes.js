@@ -6,7 +6,7 @@ module.exports = function(app) {
     // GET REQUESTS
     // ===========================================================================
 
-    // FIND ALLs
+    // see all representatives
     app.get("api/representative", function(req, res) {
         db.Representative.findAll({})
             .then(function(dbRepresentative) {
@@ -14,14 +14,13 @@ module.exports = function(app) {
             })
     });
 
+    // see all senators
     app.get("api/senator", function(req, res) {
         db.Senator.findAll({})
             .then(function(dbSenator) {
                 res.json(dbSenator)
             })
     });
-
-    // FIND ONEs
 
     // get my user info
     app.get("api/user/:user", function(req, res) {
@@ -36,10 +35,10 @@ module.exports = function(app) {
     });
 
     // get one representative by name
-    app.get("api/representative/:memberId", function(req, res) {
+    app.get("api/representative/:name", function(req, res) {
         db.Representative.findOne({
             where: {
-                memberId: req.params.memberId
+                name: req.params.name
             }
         }).then(function(dbRepresentative) {
             res.json(dbRepresentative);
@@ -47,10 +46,10 @@ module.exports = function(app) {
     });
 
     // get one senator by name
-    app.get("api/senator/:memberId", function(req, res) {
+    app.get("api/senator/:name", function(req, res) {
         db.Senator.findOne({
             where: {
-                memberId: req.params.memberId
+                name: req.params.name
             }
         }).then(function(dbSenator) {
             res.json(dbSenator);
@@ -72,7 +71,6 @@ module.exports = function(app) {
     app.get("api/representative/:state", function(req, res) {
         db.Representative.findAll({
             where: {
-                // respresentative response obj does not include state specifically, but the first two characters of their district name are their two letter state code. maybe can parse from this?
                 state: req.params.state
             }
         }).then(function(stateReps) {
@@ -80,17 +78,35 @@ module.exports = function(app) {
         })
     });
 
+    // get all senators by party
+    app.get("api/senator/:party", function(req, res) {
+        db.Senator.findAll({
+            where: {
+                party: req.params.party
+            }
+        })
+    })
+
+    // get all house representatives by party
+    app.get("api/representative/:party", function(req, res) {
+        db.Representative.findAll({
+            where: {
+                party: req.params.party
+            }
+        })
+    })
+
+    // get all comments about a senator
+    // get all comments about a representative
+    
     // get all votes from a senator/representative
         // with party
         // present
         // absent etc
         // check back on this once Carlos adds this info to his models
 
-    // get all comments about a senator
-    // get all comments about a representative
+    
 
-    // get all GOP/DEM senators
-    // get all GOP/DEB representatives
 
 
 
