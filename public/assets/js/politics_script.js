@@ -39,15 +39,17 @@ $(function(){
 
 ///////////////****** Search pages*********////////////
 //////////house
-   //
     $("#createQuery").on("click", function(event){
         event.preventDefault();
-        var a = $("#byParty").val().trim();
-        var b = $("#byState").val().trim();
-        var c = $("#byGender").val().trim();
-        var d = $("#byname").val().trim();
-        console.log(a,b,c,d);
-        // set up conditionals for if one field selected 2 if 3 
+        var query = {
+            branch: $("#byBranch").val().trim(),
+            party: $("#byParty").val().trim(),
+            state: $("#byState").val().trim(),
+            gender: $("#byGender").val().trim(),
+            name: $("#byname").val().trim()
+        };
+        
     })
+    
  
 })
