@@ -38,14 +38,14 @@ $(function(){
 
 
 ///////////////****** Search pages*********////////////
-
+//////////house
    //
-    $("#createQuery").on("submit", function(event){
+    $("#createQuery").on("click", function(event){
         event.preventDefault();
-        var a = $("byParty").val();
-        var b = $("byState").val();
-        var c = $("byGender").val();
-        var d = $("byname").val();
+        var a = $("#byParty").val().trim();
+        var b = $("#byState").val().trim();
+        var c = $("#byGender").val().trim();
+        var d = $("#byname").val().trim();
         console.log(a,b,c,d);
         // set up conditionals for if one field selected 2 if 3 
     })
