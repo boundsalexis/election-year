@@ -3,20 +3,18 @@
   <h1 class="display-4">Congress? or CongLess!</h1>
   <p class="lead">Keep track of your congress members, their campaign contributors and how they are voting.</p>
   <hr class="my-4">
-  <form>
+  <form id="signIn">
   <div class="form-group">
     <label for="signInEmail">Email address</label>
     <input type="email" class="form-control" id="signInEmail" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
-    <label for="signInEmail">Password</label>
-    <input type="password" class="form-control" id="signInEmail">
+    <label for="signInPassword">Password</label>
+    <input type="password" class="form-control" id="signInPassword">
   </div>
   <button type="submit" class="btn btn-primary">Sign In</button>
   <button type="submit" class="btn btn-primary">Forgot Password?</button>
-
-  {{!-- add js functionality on sign in modal when the secondary button is clicked --}}
   <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signUpModal">Don't have an account? Sign up here!</button>
 </form>
 
@@ -31,7 +29,7 @@
         </button>
       </div>
       <div class="modal-body">
-    <form id="newUser">
+    <form id="newUserForm">
       <div class="form-group">
     <label for="username">UserName</label>
     <input type="text" class="form-control" id="username" aria-describedby="emailNotice">
@@ -43,8 +41,8 @@
     <small id="emailNotice" class="form-text text-muted">You will use this email to login.</small>
   </div>
   <div class="form-group">
-    <label for="signUpPassword">Password</label>
-    <input type="password" class="form-control" id="signUpPassword">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password">
   </div>
   <form>
   <div class="form-group">
@@ -70,7 +68,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="newUser">Create Account</button>
       </div>
     </div>
   </div>
