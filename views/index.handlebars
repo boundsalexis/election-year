@@ -14,6 +14,8 @@
     <input type="password" class="form-control" id="signInEmail">
   </div>
   <button type="submit" class="btn btn-primary">Sign In</button>
+  <button type="submit" class="btn btn-primary">Forgot Password?</button>
+
   {{!-- add js functionality on sign in modal when the secondary button is clicked --}}
   <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signUpModal">Don't have an account? Sign up here!</button>
 </form>
@@ -29,11 +31,16 @@
         </button>
       </div>
       <div class="modal-body">
-         <form>
+    <form id="newUser">
+      <div class="form-group">
+    <label for="username">UserName</label>
+    <input type="text" class="form-control" id="username" aria-describedby="emailNotice">
+    <small id="nameNotice" class="form-text text-muted">What will display when you make comments.</small>
+  </div>
   <div class="form-group">
-    <label for="signUpEmail">Email address</label>
-    <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailNotice">
-    <small id="emailNotice" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailNotice">
+    <small id="emailNotice" class="form-text text-muted">You will use this email to login.</small>
   </div>
   <div class="form-group">
     <label for="signUpPassword">Password</label>
@@ -41,12 +48,23 @@
   </div>
   <form>
   <div class="form-group">
-      <label for="signUpLocation">What state do you live in?</label>
-    <select class="form-control" id="signUpLocation">
-        
-  <option>CA</option>
-    <option>insert 49 states</option>
-</select>
+      <label for="location">What state do you live in?</label>
+  <select class="form-control" id="location">
+       <option style="display:none;"></option>
+      <option>AL</option>
+<option>AK</option><option>AZ</option><option>AR</option><option>CA</option> 
+<option>CO</option><option>CT</option> <option>DE</option><option>FL</option>
+<option>GA</option><option>HI</option><option>ID</option><option>IL</option>
+<option>IN</option><option>IA</option><option>KS</option><option>KY</option>
+<option>LA</option><option>ME</option><option>MD</option><option>MA</option>
+<optino>MI</optino><option>MN</option><option>MS</option><option>MO</option>
+<option>MT</option><option>NE</option><option>NV</option><option>NH</option>
+<option>NJ</option><option>NM</option><option>NY</option><option>NC</option>
+<option>ND</option><option>OH</option><option>OK</option><option>OR</option>
+<option>PA</option><option>RI</option><option>SC</option><option>SD</option>
+<option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+<option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+      </select>
 </form>
 </form>
       </div>

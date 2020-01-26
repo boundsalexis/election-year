@@ -23,6 +23,5 @@ module.exports = function(app) {
         }
     })
 
-    // do we wanna do /search/:id with parameters
  //app.get app.post app.delete
   };
