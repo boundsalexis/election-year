@@ -24,7 +24,10 @@ module.exports = function () {
                     name: members[i].first_name + " " + members[i].last_name,
                     state: members[i].state,
                     fecId: members[i].fec_candidate_id,
-                    memberId: members[i].id 
+                    memberId: members[i].id,
+                    // added party and gender info -IT
+                    party: members[i].party,
+                    gender: members[i].gender
                 });
             }
 
@@ -65,8 +68,13 @@ module.exports = function () {
                 db.Representative.create({
                     name: members[i].first_name + " " + members[i].last_name,
                     district: members[i].state + members[i].district,
+                    // added state info
+                    state: members[i].state,
                     fecId: members[i].fec_candidate_id,
-                    memberId: members[i].id 
+                    memberId: members[i].id,
+                    // added party and gender info -IT
+                    party: members[i].party,
+                    gender: members[i].gender
                 });
             }
 

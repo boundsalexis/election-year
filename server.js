@@ -17,12 +17,14 @@ app.set("view engine", "handlebars");
 var db = require("./models");
 ///routes variable and sequelize???
 console.log("REQUIRING TO POPULATE");
+// comment out to prevent table pop each time when running
 require("./db/populateDB")();
 
 
 
-////
+/////html-routes.js
 require("./routes/html-routes.js")(app);
+require("./routes/api-routes")(app);
 
 db.sequelize.sync().then(function(){
     app.listen(PORT, function() {
