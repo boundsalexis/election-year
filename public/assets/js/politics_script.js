@@ -48,7 +48,19 @@ $(function(){
             gender: $("#byGender").val().trim(),
             name: $("#byname").val().trim()
         };
-        
+        if(!query.branch && !query.party && !query.state && !query.gender && !query.name){
+            console.log("this an empty query my friend")
+        }
+        else if (!query.branch && !query.party && !query.state && !query.gender){
+            $.ajax({
+                method: "GET",
+                url: "/api/postspi/representative/:name",
+                data: query.name
+              })
+                .then(function(response) {
+                  console.log(response);
+                });
+        }
     })
     
  
