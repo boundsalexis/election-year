@@ -113,9 +113,12 @@ module.exports = function(app) {
     })
     
     // post a comment on a representatives page
+    app.post("api/senator/comments", function(req, res) {
+        db.Comment.create(req.body).then(function(dbComment) {
+            res.json(dbComment)
+        })
+    })
 
-
-    // post a saved representative to my save reps
 
 
   };
