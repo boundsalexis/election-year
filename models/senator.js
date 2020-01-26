@@ -15,6 +15,15 @@ module.exports = function (sequelize, DataTypes) {
         memberId: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        // adding party and gender info -IT
+        party: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
     Senator.associate = models => {

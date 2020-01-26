@@ -8,6 +8,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // adding state as separate column for ease of get reps/sens by state requests
+        state: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         fecId: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -15,6 +20,15 @@ module.exports = function (sequelize, DataTypes) {
         memberId: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        // adding party and gender info -IT
+        party: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
     Representative.associate = models => {
