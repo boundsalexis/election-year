@@ -40,7 +40,7 @@ $(function(){
 ///////////////****** Search pages*********////////////
 
    //
-    $("#houseSearch").on("submit", function(event){
+    $("#createQuery").on("submit", function(event){
         event.preventDefault();
         var a = $("byParty").val();
         var b = $("byState").val();
