@@ -25,9 +25,15 @@ module.exports = function () {
                     state: members[i].state,
                     fecId: members[i].fec_candidate_id,
                     memberId: members[i].id,
-                    // added party and gender info -IT
                     party: members[i].party,
                     gender: members[i].gender
+                }).then(function (r) {
+                    db.VotingRecord.create({
+                        missed_pct: members[i].missed_votes_pct,
+                        votesWParty_pct: members[i].votes_with_party_pct,
+                        votesWOParty_pct: members[i].votes_against_party_pct,
+                        SenatorId: r.dataValues.id
+                    });
                 });
             }
 
@@ -67,14 +73,21 @@ module.exports = function () {
             for (let i = 0; i < members.length; i++) {
                 db.Representative.create({
                     name: members[i].first_name + " " + members[i].last_name,
-                    district: members[i].state + members[i].district,
-                    // added state info
+                    district: members[i].district,
                     state: members[i].state,
                     fecId: members[i].fec_candidate_id,
                     memberId: members[i].id,
-                    // added party and gender info -IT
                     party: members[i].party,
                     gender: members[i].gender
+                }).then(function (r) {
+                    // console.log("CREATE RESPONSE!!!");
+                    // console.log(response.dataValues.id);
+                    db.VotingRecord.create({
+                        missed_pct: members[i].missed_votes_pct,
+                        votesWParty_pct: members[i].votes_with_party_pct,
+                        votesWOParty_pct: members[i].votes_against_party_pct,
+                        RepresentativeId: r.dataValues.id
+                    });
                 });
             }
 
