@@ -55,7 +55,7 @@ $(function(){
             $.ajax({
                 method: "GET",
                 url: "/api/postspi/representative/:name",
-                data: query.name
+                data: query
               })
                 .then(function(response) {
                   console.log(response);
