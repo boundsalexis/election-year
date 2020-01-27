@@ -23,16 +23,16 @@ module.exports = function(app) {
     });
 
     // get my user info
-    app.get("api/user/:user", function(req, res) {
-        db.User.findOne({
-            where: { 
-                // Might consider adding id auto_incrememnting to username model, help distinguish from users with the same name
-                name: req.params.name
-            }
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        })
-    });
+    // app.get("api/user/:user", function(req, res) {
+    //     db.User.findOne({
+    //         where: { 
+    //             // Might consider adding id auto_incrememnting to username model, help distinguish from users with the same name
+    //             name: req.params.name
+    //         }
+    //     }).then(function(dbUser) {
+    //         res.json(dbUser);
+    //     })
+    // });
 
     // get one representative by name
     app.get("api/representative/:name", function(req, res) {
@@ -115,7 +115,14 @@ module.exports = function(app) {
     // ===========================================================================
 
     // post new user account info
-    app.post("api/user", function(req, res) {
+    app.post("/api/newuser", function(req, res) {
+        console.log("we in here now", req.body)
+        db.User.create(req.body).then(function(dbUser) {
+            res.json(dbUser)
+        })
+    })
+    app.post("/api/newlogin", function(req, res) {
+        console.log("we in here now", req)
         db.User.create(req.body).then(function(dbUser) {
             res.json(dbUser)
         })
