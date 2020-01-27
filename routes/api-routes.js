@@ -124,7 +124,7 @@ module.exports = function(app) {
     app.post("/api/newlogin", function(req, res) {
         console.log("we in here now", req)
         db.User.create(req.body).then(function(dbUser) {
-            res.json(dbUser)
+            res.json(dbLogins)
         })
     })
 
