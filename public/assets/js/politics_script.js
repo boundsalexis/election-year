@@ -1,7 +1,13 @@
-$(function(){
+$(document).ready(function() {
     //make sure everything is loaded before we start
-    
+
     /////////////// *********index***********/////////////////
+
+    // $(document).on("submit", "#signIn", handleSignIn);
+
+    $(document).on("submit", "#senate-search", getSenators);
+
+
         $("#signIn").on("submit", function(event){
             console.log("i work!");
             event.preventDefault();
@@ -14,6 +20,7 @@ $(function(){
         //add get route to route to profile page populated with
         //saved table and comments?   
         })
+            
         $("#newUser").on("click", function(event){
             event.preventDefault();
             var newUserData ={
@@ -27,11 +34,15 @@ $(function(){
             }
             console.log($("#location").val().trim())
             console.log(newUserData);
-            console.log(newLoginData);
+            // console.log(newLoginData);
         //add post route to add this to  db
         // add get route to route to profile page?
         })
-    
+
+        // function addNewUser(newUserData) {
+        //     $.post("/api/user", newUserData)
+        //         .then(getUser)
+        // }
     
         //////
         // decide if we want forgot password functionality
