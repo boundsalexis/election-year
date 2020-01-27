@@ -1,4 +1,6 @@
-$(document).ready(function(){
+
+$(document).ready(function() {
+>>>>>>> master
     //make sure everything is loaded before we start
     
     /////////////// *********index***********/////////////////
@@ -63,4 +65,5 @@ $(document).ready(function(){
         })
         
      
+
     })
