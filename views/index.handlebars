@@ -1,6 +1,23 @@
-
 <div class="jumbotron">
   <h1 class="display-4">Congress? or CongLess!</h1>
+<<<<<<< HEAD
+    <p class="lead">Keep track of your congress members, their campaign contributors and how they are voting.</p>
+    <hr class="my-4">
+    <form>
+      <div class="form-group">
+        <label for="signInEmail">Email address</label>
+        <input type="email" class="form-control" id="signInEmail" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="signInPassword">Password</label>
+        <input type="password" class="form-control" id="signInPassword">
+      </div>
+      <button type="submit" class="btn btn-primary" id="signIn">Sign In</button>
+  {{!-- add js functionality on sign in modal when the secondary button is clicked --}}
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signUpModal">Don't have an account? Sign up here!</button>
+    </form>
+=======
   <p class="lead">Keep track of your congress members, their campaign contributors and how they are voting.</p>
   <hr class="my-4">
   <form id="signIn">
@@ -17,8 +34,57 @@
   <button type="submit" class="btn btn-primary">Forgot Password?</button>
   <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signUpModal">Don't have an account? Sign up here!</button>
 </form>
+>>>>>>> master
 
+    {{!-- SIGN UP MODAL --}}
+    <div class="modal" tabindex="-1" role="dialog" id="signUpModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
 
+<<<<<<< HEAD
+          <div class="modal-body">
+            <form>
+
+              <div class="form-group">
+                <label for="signUpUsername">Username</label>
+                <input type="username" class="form-control" id="signUpUsername">
+              </div>
+
+              <div class="form-group">
+                <label for="signUpEmail">Email address</label>
+                <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailNotice">
+                <small id="emailNotice" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="signUpPassword">Password</label>
+                <input type="password" class="form-control" id="signUpPassword">
+              </div>
+            
+              <form>
+                <div class="form-group">
+                <label for="signUpLocation">What state do you live in?</label>
+                <select class="form-control" id="signUpLocation">    
+                  <option>CA</option>
+                  <option>insert 49 states</option>
+                </select>
+              </form>
+
+            </form>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+=======
 <div class="modal" tabindex="-1" role="dialog" id="signUpModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -69,8 +135,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="newUser">Create Account</button>
+>>>>>>> master
       </div>
     </div>
-  </div>
-</div>
 </div>
