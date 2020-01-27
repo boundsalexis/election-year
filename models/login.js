@@ -4,14 +4,18 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                len: [1,10]
+                isEmail: true,
+                msg: "Must enter a valid email"
             }
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8, 20]
+                len: {
+                    args: 4,
+                    msg: "Password but be longer than 4 characters"
+                }
             }
         }
 

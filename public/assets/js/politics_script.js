@@ -19,6 +19,10 @@ $(document).ready(function() {
         ////////////// //*********************SIGN UP ******/ ////////////// 
         $("#newUser").on("click", function(event){
             event.preventDefault();
+            ////////// client side validation to avoid mysterious server errors/////////
+        
+
+
             var newUserData ={
                 name: $("#username").val().trim(),
                 location: $("#location").val().trim()
@@ -37,17 +41,25 @@ $(document).ready(function() {
         })
       
         
-        function addNewUser(data){
+        addNewUser = data=> {
             console.log(data);
             $.post("/api/newuser", data).then( res =>{
-                console.log("we did something", res)
+                let i =0;
+                while(i<=res.errors.length-1){
+                    alert(res.errors[i].message)
+                    i+= 1;
+                }
             })
 
         }
-        function addNewLogin(data){
+        addNewLogin =data =>{
             console.log(data);
             $.post("/api/newlogin", data).then( res =>{
-                console.log("we did something",res)
+                let i =0;
+                while(i<=res.errors.length-1){
+                    alert(res.errors[i].message)
+                    i+= 1;
+                }
             })
 
         }
