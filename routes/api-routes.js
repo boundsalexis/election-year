@@ -6,19 +6,21 @@ module.exports = function(app) {
     // GET REQUESTS
     // ===========================================================================
 
+    // will consolidate this into a mulptiple option route parameter api express route
+
+    // see all senators
+    app.get("/api/senator", function(req, res) {
+        db.Senator.findAll({})
+            .then(function(dbSenator) {
+                res.json(dbSenator)
+            })
+    });
+
     // see all representatives
     app.get("api/representative", function(req, res) {
         db.Representative.findAll({})
             .then(function(dbRepresentative) {
                 res.json(dbRepresentative)
-            })
-    });
-
-    // see all senators
-    app.get("api/senator", function(req, res) {
-        db.Senator.findAll({})
-            .then(function(dbSenator) {
-                res.json(dbSenator)
             })
     });
 
@@ -138,3 +140,21 @@ module.exports = function(app) {
 
 
   };
+
+    // ===========================================================================
+    // QUERY REQUEST
+    // ===========================================================================
+
+    // app.get("api/:branch?/:party?/:state?/:gender?/:name?", function(req, res) {
+    //     var branch = req.params.branch;
+    //     console.log(branch);
+        // var party = req.params.party;
+        // console.log(party);
+        // var state = req.params.state;
+        // console.log(state);
+        // var gender = req.params.gender;
+        // console.log(gender);
+        // var name = req.params.name;
+        // console.log(name);
+    // });
+

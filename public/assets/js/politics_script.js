@@ -1,6 +1,4 @@
-
 $(document).ready(function() {
->>>>>>> master
     //make sure everything is loaded before we start
     
     /////////////// *********index***********/////////////////
@@ -42,6 +40,7 @@ $(document).ready(function() {
     //////////house
         $("#createQuery").on("click", function(event){
             event.preventDefault();
+            // console.log(event);
             var query = {
                 branch: $("#byBranch").val().trim(),
                 party: $("#byParty").val().trim(),
@@ -49,21 +48,32 @@ $(document).ready(function() {
                 gender: $("#byGender").val().trim(),
                 name: $("#byname").val().trim()
             };
+            console.log(query);
             if(!query.branch && !query.party && !query.state && !query.gender && !query.name){
                 console.log("this an empty query my friend")
             }
-            else if (!query.branch && !query.party && !query.state && !query.gender){
-                $.ajax({
-                    method: "GET",
-                    url: "/api/postspi/representative/:name",
-                    data: query
-                  })
-                    .then(function(response) {
-                      console.log(response);
-                    });
-            }
-        })
-        
-     
+            else if (!query.branch){
+                console.log("You must choose one branch to search.")
+            } else {
+                console.log("You are searching the " + query.branch + ".");
+                // console.log("You are searching for all " + query.party + " in this branch.");
+                // console.log("You are searching for all senators/representatives for the state of " + query.state + ".");
+                // console.log("You are searching for all " + query.gender + " senators/representatives");
+                // console.log("The name of the senator/representative that you are searching for is " + query.name + ".")
 
+                $.get("/api/senator", function(data) {
+                    console.log(data)
+                })
+
+            };
+        })
+
+
+
+
+
+    // end of doc ready listener, DONT TOUCH THIS
     })
+
+
+
