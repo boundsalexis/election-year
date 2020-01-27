@@ -1,10 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function(){
     //make sure everything is loaded before we start
-
+    
     /////////////// *********index***********/////////////////
-
         $("#signIn").on("submit", function(event){
-            console.log("i work!");
             event.preventDefault();
             var signIn={
                 email: $("#signInEmail").val().trim(),
@@ -15,7 +13,6 @@ $(document).ready(function() {
         //add get route to route to profile page populated with
         //saved table and comments?   
         })
-            
         $("#newUser").on("click", function(event){
             event.preventDefault();
             var newUserData ={
@@ -29,11 +26,9 @@ $(document).ready(function() {
             }
             console.log($("#location").val().trim())
             console.log(newUserData);
-            // console.log(newLoginData);
         //add post route to add this to  db
         // add get route to route to profile page?
         })
-
     
         //////
         // decide if we want forgot password functionality
@@ -41,29 +36,31 @@ $(document).ready(function() {
     
     
     
-
-///////////////****** Search pages*********////////////
-//////////house
-$("#createQuery").on("click", function(event){
-    event.preventDefault();
-    var query = {
-        branch: $("#byBranch").val().trim(),
-        party: $("#byParty").val().trim(),
-        state: $("#byState").val().trim(),
-        gender: $("#byGender").val().trim(),
-        name: $("#byname").val().trim()
-    };
-    if(!query.branch && !query.party && !query.state && !query.gender && !query.name){
-        console.log("this an empty query my friend")
-    }
-    else if (!query.branch && !query.party && !query.state && !query.gender){
-        $.ajax({
-            method: "GET",
-            url: "/api/postspi/representative/:name",
-            data: query
-          })
-            .then(function(response) {
-              console.log(response);
-            });
-    }
-})
+    ///////////////****** Search pages*********////////////
+    //////////house
+        $("#createQuery").on("click", function(event){
+            event.preventDefault();
+            var query = {
+                branch: $("#byBranch").val().trim(),
+                party: $("#byParty").val().trim(),
+                state: $("#byState").val().trim(),
+                gender: $("#byGender").val().trim(),
+                name: $("#byname").val().trim()
+            };
+            if(!query.branch && !query.party && !query.state && !query.gender && !query.name){
+                console.log("this an empty query my friend")
+            }
+            else if (!query.branch && !query.party && !query.state && !query.gender){
+                $.ajax({
+                    method: "GET",
+                    url: "/api/postspi/representative/:name",
+                    data: query
+                  })
+                    .then(function(response) {
+                      console.log(response);
+                    });
+            }
+        })
+        
+     
+    })
