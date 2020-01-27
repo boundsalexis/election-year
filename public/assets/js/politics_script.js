@@ -13,6 +13,10 @@ $(document).ready(function() {
         //add get route to route to profile page populated with
         //saved table and comments?   
         })
+
+
+
+        ////////////// //*********************SIGN UP ******/ ////////////// 
         $("#newUser").on("click", function(event){
             event.preventDefault();
             var newUserData ={
@@ -24,12 +28,31 @@ $(document).ready(function() {
                 password: $("#password").val().trim()
     
             }
-            console.log($("#location").val().trim())
-            console.log(newUserData);
-        //add post route to add this to  db
-        // add get route to route to profile page?
+            console.log(newLoginData, newUserData);
+            addNewUser(newUserData);
+            addNewLogin(newLoginData);
+
+            console.log("made it through no error")
+  
         })
-    
+      
+        
+        function addNewUser(data){
+            console.log(data);
+            $.post("/api/newuser", data).then( res =>{
+                console.log("we did something", res)
+            })
+
+        }
+        function addNewLogin(data){
+            console.log(data);
+            $.post("/api/newlogin", data).then( res =>{
+                console.log("we did something",res)
+            })
+
+        }
+
+        // }
         //////
         // decide if we want forgot password functionality
         //////

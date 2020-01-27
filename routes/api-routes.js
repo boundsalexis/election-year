@@ -117,12 +117,18 @@ module.exports = function(app) {
     // ===========================================================================
 
     // post new user account info
-    app.post("api/user", function(req, res) {
-        db.User.create(req.body).then(function(dbUser) {
-            res.json(dbUser)
+    app.post("/api/newuser", function(req, res) {
+        console.log("the api had been entered", req.body, "\n\n\n");
+        db.User.create(req.body).then(function(dbUsers) {
+            res.json(dbUsers)
         })
     })
-
+    app.post("/api/newlogin", function(req, res) {
+        console.log("the api had been entered", req.body, "\n\n\n");
+        db.Login.create(req.body).then(function(dbLogins) {
+            res.json(dbLogins)
+        })
+    })
     // post a comment on a representatives page
     app.post("api/representative/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
