@@ -4,10 +4,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                is:{
-                    args:/^[A-Za-z\d&*^%$#@!+_=.,?]+$/i,
-                    msg: "Name may only contain the alphabet"
-                },
                 len: {
                     args: 3,
                     msg: "Name must be atleast 3 characters in length"

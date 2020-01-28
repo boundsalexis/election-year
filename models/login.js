@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Login = sequelize.define("Login", {
-        username: {
+        email: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                isEmail: true,
-                msg: "Must enter a valid email"
+                isEmail: true
+                // msg: "Must enter a valid email"
             }
         },
         password: {

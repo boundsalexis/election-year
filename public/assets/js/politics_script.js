@@ -8,61 +8,69 @@ $(document).ready(function() {
                 email: $("#signInEmail").val().trim(),
                 password: $("#signInPassword").val().trim()
             }
-            console.log(signIn);
-        //add post route to check login against our db 
-        //add get route to route to profile page populated with
-        //saved table and comments?   
+            login(signIn);
+       
+            
         })
 
+login = data => {
+    $.get("/api/login/"+data.email+"/"+data.password, function(res){
 
+    })
+}
 
         ////////////// //*********************SIGN UP ******/ ////////////// 
         $("#newUser").on("click", function(event){
             event.preventDefault();
-            ////////// client side validation to avoid mysterious server errors/////////
-        
-
-
-            var newUserData ={
+          //client side verification
+            var newCredential ={
                 name: $("#username").val().trim(),
-                location: $("#location").val().trim()
-            }
-            var newLoginData = {
-                username: $("#email").val().trim(),
-                password: $("#password").val().trim()
-    
-            }
-            console.log(newLoginData, newUserData);
-            addNewUser(newUserData);
-            addNewLogin(newLoginData);
+                location: $("#location").val().trim(),
+                email: $("#email").val().trim(),
+                password: $("#password").val().trim()}
 
-            console.log("made it through no error")
+        
+           addCredential(newCredential);
+
+  
   
         })
       
         
-        addNewUser = data=> {
-            console.log(data);
-            $.post("/api/newuser", data).then( res =>{
-                let i =0;
-                while(i<=res.errors.length-1){
-                    alert(res.errors[i].message)
-                    i+= 1;
-                }
+        addCredential = (data)=> {
+
+            $.post("/api/addcredential", data).then(res=>{
+                console.log(res);
             })
 
-        }
-        addNewLogin =data =>{
-            console.log(data);
-            $.post("/api/newlogin", data).then( res =>{
-                let i =0;
-                while(i<=res.errors.length-1){
-                    alert(res.errors[i].message)
-                    i+= 1;
-                }
-            })
+
+            // console.log(data);
+            // $.post("/api/newuser", data).then( res =>{
+            //    console.log(res);
+            //     // if (res.error.length>0){
+            //     let i =0;
+            //     while(i<=res.errors.length-1){
+            //         alert(res.errors[i].message)
+            //         i+= 1;
+            //     }
+            // // }
+            // })
 
         }
+        // addNewLogin =data =>{
+        //     console.log(data);
+        //     $.post("/api/newlogin", data).then( res =>{
+        //         // if (res.error.length>0){
+        //             console.log(res);
+        //         let i =0;
+        //         while(i<=res.errors.length-1){
+        //             alert(res.errors[i].message)
+        //             i+= 1;
+        //         }
+        //     // }
+        //     })
+
+        // }
 
         // }
         //////

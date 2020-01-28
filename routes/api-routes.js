@@ -23,8 +23,37 @@ module.exports = function(app) {
                 res.json(dbRepresentative)
             })
     });
-
+//////*******************LOGIN API GET **********//////////////////
     // get my user info
+
+//     app.get("/api/login/:", function(req,res){
+//       db.Login.findAll({}).then(function(dbLogin){
+//           res.json(dbLogin)
+//       }
+// )
+//     })
+app.get("/api/login/:email/:password", function(req,res){
+    db.Login.findOne({
+        where:{
+            email:req.params.email,
+            password:req.params.password
+        }
+    }).then(function(data) {
+           if (data) {
+            db.User.findOne({
+                where: {
+                    id: data.dataValues.UserId
+                }
+            }).then(data=>{
+                console.log("am i here")
+                app.render("user",data.dataValues, err=>{
+                    console.log(err);
+                });
+                // res.render("user", data.dataValues);
+            })
+        }
+    })
+})
     app.get("api/user/:user", function(req, res) {
         db.User.findOne({
             where: { 
@@ -110,30 +139,29 @@ module.exports = function(app) {
     
 
 
-
-
     // ===========================================================================
     // POST REQUESTS
     // ===========================================================================
 
     // post new user account info
-    app.post("/api/newuser", function(req, res) {
-        console.log("the api had been entered", req.body, "\n\n\n");
-        db.User.create(req.body).then(function(dbUser) {
-            console.log(dbUser);
-            res.json(dbUser);
-        }).catch(function(err){
-            res.json(err);
-        })
+    app.post("/api/addcredential", function(req, res) {
+      console.log(req.body);
+      var user = {
+        name: req.body.name,
+        location: req.body.location
+      };
+      var login = {
+          email:req.body.email,
+          password:req.body.password
+
+      };
+      db.User.create(user).then(res=>{
+          login.UserId = res.dataValues.id;
+          db.Login.create(login);
+      })
+
     })
-    app.post("/api/newlogin", function(req, res) {
-        console.log("the api had been entered", req.body, "\n\n\n");
-        db.Login.create(req.body).then(function(dbLogin) {
-            res.json(dbLogin)
-        }).catch(function(err){
-            res.json(err);
-        })
-    })
+  
     // post a comment on a representatives page
     app.post("api/representative/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
