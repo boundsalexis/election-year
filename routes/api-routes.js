@@ -26,18 +26,31 @@ module.exports = function(app) {
                 res.json(dbRepresentative)
             })
     });
+//////*******************LOGIN API GET **********//////////////////
 
-    // get my user info
-    app.get("/api/user/:id", function (req, res) {
-        console.log("gettingUserInfo");
+app.get("/api/login/:email/:password", function(req,res){
+    db.Login.findOne({
+        where:{
+            email:req.params.email,
+            password:req.params.password
+        }
+    }).then(function(data) {
+        res.json(data.dataValues.UserId);
+        console.log(data.dataValues.UserId);
+  
+    })
+})
+app.get("/api/user/:user", function(req, res) {
         db.User.findOne({
-            where: { 
-                // Might consider adding id auto_incrememnting to username model, help distinguish from users with the same name
-                id: parseInt(req.params.id)
-            }
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        })
+                    where: {
+                        id: req.params.user
+                    }
+                }).then(data=>{
+                    console.log(data.dataValues)
+                   
+                    res.render("user", data.dataValues);
+                })
+
     });
 
     // get one representative by name
@@ -134,20 +147,28 @@ module.exports = function(app) {
     
 
 
-
-
     // ===========================================================================
     // POST REQUESTS
     // ===========================================================================
 
     // post new user account info
-    app.post("api/user", function(req, res) {
-        db.User.create(req.body).then(function(dbUser) {
-            res.json(dbUser)
-        })
-    })
+    app.post("/api/addcredential", function(req, res) {
+      console.log(req.body);
+      var user = {
+        name: req.body.name,
+        location: req.body.location
+      };
+      var login = {
+          email:req.body.email,
+          password:req.body.password
 
-    // post a comment on a senator page
+      };
+      db.User.create(user).then(res=>{
+          login.UserId = res.dataValues.id;
+          db.Login.create(login);
+      })
+
+
     app.post("api/representative/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
             res.json(dbComment)

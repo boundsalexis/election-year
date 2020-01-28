@@ -4,7 +4,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1]
+                len: {
+                    args: 3,
+                    msg: "Name must be atleast 3 characters in length"
+                }
             }
         },
         location: {
