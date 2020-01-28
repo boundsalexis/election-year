@@ -24,14 +24,7 @@ module.exports = function(app) {
             })
     });
 //////*******************LOGIN API GET **********//////////////////
-    // get my user info
 
-//     app.get("/api/login/:", function(req,res){
-//       db.Login.findAll({}).then(function(dbLogin){
-//           res.json(dbLogin)
-//       }
-// )
-//     })
 app.get("/api/login/:email/:password", function(req,res){
     db.Login.findOne({
         where:{
@@ -39,30 +32,21 @@ app.get("/api/login/:email/:password", function(req,res){
             password:req.params.password
         }
     }).then(function(data) {
-           if (data) {
-            db.User.findOne({
-                where: {
-                    id: data.dataValues.UserId
-                }
-            }).then(data=>{
-                console.log("am i here")
-                app.render("user",data.dataValues, err=>{
-                    console.log(err);
-                });
-                // res.render("user", data.dataValues);
-            })
-        }
+        res.json(data.dataValues.UserId);
+        console.log(data.dataValues.UserId);
+  
     })
 })
-    app.get("api/user/:user", function(req, res) {
+app.get("/api/user/:user", function(req, res) {
         db.User.findOne({
-            where: { 
-                // Might consider adding id auto_incrememnting to username model, help distinguish from users with the same name
-                name: req.params.name
-            }
-        }).then(function(dbUser) {
-            res.json(dbUser);
-        })
+                    where: {
+                        id: req.params.user
+                    }
+                }).then(data=>{
+                    console.log(data.dataValues)
+                   
+                    res.render("user", data.dataValues);
+                })
     });
 
     // get one representative by name
