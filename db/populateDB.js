@@ -26,7 +26,8 @@ module.exports = function () {
                     fecId: members[i].fec_candidate_id,
                     memberId: members[i].id,
                     party: members[i].party,
-                    gender: members[i].gender
+                    gender: members[i].gender,
+                    crpid: members[i].crp_id
                 }).then(function (r) {
                     db.VotingRecord.create({
                         missed_pct: members[i].missed_votes_pct,
@@ -78,7 +79,8 @@ module.exports = function () {
                     fecId: members[i].fec_candidate_id,
                     memberId: members[i].id,
                     party: members[i].party,
-                    gender: members[i].gender
+                    gender: members[i].gender,
+                    crpid: members[i].crp_id
                 }).then(function (r) {
                     // console.log("CREATE RESPONSE!!!");
                     // console.log(response.dataValues.id);
@@ -113,5 +115,5 @@ module.exports = function () {
     }
     console.log("CALLING TO POPULATE");
 
-    populateRepresentatives();
+    // populateRepresentatives();
 }
