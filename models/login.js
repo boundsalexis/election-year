@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                isEmail: true
+                isEmail: true,
                 // msg: "Must enter a valid email"
                 len: [1, 100]
             }

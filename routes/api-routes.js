@@ -36,7 +36,7 @@ app.get("/api/login/:email/:password", function(req,res){
         console.log(data.dataValues.UserId);
   
     })
-})
+});
 app.get("/api/user/:user", function(req, res) {
         db.User.findOne({
                     where: {
@@ -95,22 +95,22 @@ app.get("/api/user/:user", function(req, res) {
     });
 
     // get all senators by party
-    app.get("api/senator/:party", function(req, res) {
+    app.get("api/senator/:party", function (req, res) {
         db.Senator.findAll({
             where: {
                 party: req.params.party
             }
         })
-    })
+    });
 
     // get all house representatives by party
-    app.get("api/representative/:party", function(req, res) {
+    app.get("api/representative/:party", function (req, res) {
         db.Representative.findAll({
             where: {
                 party: req.params.party
             }
         })
-    })
+    });
 
     // get all comments about a senator
     // Sends an array of comment objects
@@ -122,7 +122,7 @@ app.get("/api/user/:user", function(req, res) {
             response = response.map(c => c.dataValues);
             res.json(response);
         });
-    })
+    });
     // get all comments about a representative
     // Sends an array of comment objects
     app.get("api/comment/:id", function (req, res) {
@@ -164,20 +164,21 @@ app.get("/api/user/:user", function(req, res) {
           login.UserId = res.dataValues.id;
           db.Login.create(login);
       })
+    });
 
 
     app.post("api/representative/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
             res.json(dbComment)
         })
-    })
+    });
     
     // post a comment on a representatives page
     app.post("api/senator/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
             res.json(dbComment)
         })
-    })
+    });
 
 
 
@@ -232,4 +233,4 @@ app.get("/api/user/:user", function(req, res) {
         })
     });
 
-};
+}
