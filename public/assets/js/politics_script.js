@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     //make sure everything is loaded before we start
 
@@ -16,6 +17,10 @@ $(document).ready(function () {
             console.log(res);
             window.location = "/api/user/" + res;
     
+
+    
+
+
     /////////////// *********index***********/////////////////
 
     
