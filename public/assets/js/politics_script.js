@@ -22,7 +22,6 @@ $(document).ready(function() {
             var newLoginData = {
                 username: $("#email").val().trim(),
                 password: $("#password").val().trim()
-    
             }
             console.log($("#location").val().trim())
             console.log(newUserData);
@@ -33,14 +32,13 @@ $(document).ready(function() {
         //////
         // decide if we want forgot password functionality
         //////
-    
-    
-    
+
     ///////////////****** Search pages*********////////////
     //////////house
         $("#createQuery").on("click", function(event){
             event.preventDefault();
-            // console.log(event);
+            
+            // INSTANTIATE QUERY OBJECT HANDLING USER INPUT
             var query = {
                 branch: $("#byBranch").val().trim(),
                 party: $("#byParty").val().trim(),
@@ -48,24 +46,120 @@ $(document).ready(function() {
                 gender: $("#byGender").val().trim(),
                 name: $("#byname").val().trim()
             };
-            console.log(query);
+
+            // INSTANTIATE GLOBAL VARIABLES FOR FUTURE USE
+            var partyAbrv;
+            var searchState;
+            var genderAbrv;
+            var searchName;
+
+            // VALIDATIONS
             if(!query.branch && !query.party && !query.state && !query.gender && !query.name){
                 console.log("this an empty query my friend")
             }
             else if (!query.branch){
                 console.log("You must choose one branch to search.")
-            } else {
-                console.log("You are searching the " + query.branch + ".");
-                // console.log("You are searching for all " + query.party + " in this branch.");
-                // console.log("You are searching for all senators/representatives for the state of " + query.state + ".");
-                // console.log("You are searching for all " + query.gender + " senators/representatives");
-                // console.log("The name of the senator/representative that you are searching for is " + query.name + ".")
+            } else {                
+                switch(query.branch) {
+                    case "Senate":
 
-                $.get("/api/senator", function(data) {
-                    console.log(data)
-                })
+                        function handleUserInput() {
+                            // ABBREVIATES PARTY NAME FOR QUERY
+                            if (query.party === "Democrats") {
+                                partyAbrv = "D";
+                            } else if (query.party === "Republicans") {
+                                partyAbrv = "R";
+                            } else if (query.party === "Independents") {
+                                partyAbrv = "ID"
+                            } else if (!query.party) {
+                                partyAbrv = "empty"
+                            }
+                            // IF STATE BLANK
+                            if (!query.state) {
+                                searchState = "empty";
+                            } else {
+                                searchState = query.state;
+                            }
+                            // ABBREVIATES GENDER FOR QUERY
+                            if (query.gender === "Male") {
+                                genderAbrv = "M";
+                            } else if (query.gender === "Female") {
+                                genderAbrv = "F";
+                            } else if (!query.gender) {
+                                genderAbrv = "empty";
+                            }
+                            // IF NAME BLANK
+                            if (!query.name) {
+                                searchName = "empty";
+                            } else {
+                                searchName = query.name;
+                            }
+                        }
+
+                        handleUserInput();
+                        
+                        var queryString =   "/api/senator/" +
+                                            partyAbrv + "/" +
+                                            searchState + "/" +
+                                            genderAbrv + "/"
+                                            + searchName;
+                        
+                        $.get(queryString, function(data) {
+                            console.log(data)
+                        })
+                        break;
+
+                    case "House of Representatives":
+                        // console.log("You're searching the House of Representatives!");
+                            function handleUserInput() {
+                            // ABBREVIATES PARTY NAME FOR QUERY
+                            if (query.party === "Democrats") {
+                                partyAbrv = "D";
+                            } else if (query.party === "Republicans") {
+                                partyAbrv = "R";
+                            } else if (query.party === "Independents") {
+                                partyAbrv = "ID"
+                            } else if (!query.party) {
+                                partyAbrv = "empty"
+                            }
+                            // IF STATE BLANK
+                            if (!query.state) {
+                                searchState = "empty";
+                            } else {
+                                searchState = query.state;
+                            }
+                            // ABBREVIATES GENDER FOR QUERY
+                            if (query.gender === "Male") {
+                                genderAbrv = "M";
+                            } else if (query.gender === "Female") {
+                                genderAbrv = "F";
+                            } else if (!query.gender) {
+                                genderAbrv = "empty";
+                            }
+                            // IF NAME BLANK
+                            if (!query.name) {
+                                searchName = "empty";
+                            } else {
+                                searchName = query.name;
+                            }
+                        }
+
+                        handleUserInput();
+                        
+                        var queryString =   "/api/representative/" +
+                                            partyAbrv + "/" +
+                                            searchState + "/" +
+                                            genderAbrv + "/"
+                                            + searchName;
+                        
+                        $.get(queryString, function(data) {
+                            console.log(data)
+                        })
+
+                }
 
             };
+
         })
 
 
