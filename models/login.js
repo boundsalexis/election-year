@@ -6,6 +6,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 isEmail: true
                 // msg: "Must enter a valid email"
+                len: [1, 100]
             }
         },
         password: {

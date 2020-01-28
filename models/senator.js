@@ -31,6 +31,9 @@ module.exports = function (sequelize, DataTypes) {
         models.Senator.hasMany(models.Comment, {
             onDelete: "cascade"
         })
+        models.Senator.hasOne(models.VotingRecord, {
+            onDelete: "cascade"
+        })
     }
     return Senator;
 }

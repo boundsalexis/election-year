@@ -17,7 +17,7 @@ module.exports = function(app) {
     });
 
     // see all representatives
-    app.get("api/representative", function(req, res) {
+    app.get("/api/representative", function(req, res) {
         db.Representative.findAll({})
             .then(function(dbRepresentative) {
                 res.json(dbRepresentative)
@@ -47,6 +47,7 @@ app.get("/api/user/:user", function(req, res) {
                    
                     res.render("user", data.dataValues);
                 })
+
     });
 
     // get one representative by name
@@ -61,7 +62,7 @@ app.get("/api/user/:user", function(req, res) {
     });
 
     // get one senator by name
-    app.get("api/senator/:name", function(req, res) {
+    app.get("/api/senatorByName/:name", function(req, res) {
         db.Senator.findOne({
             where: {
                 name: req.params.name
@@ -72,7 +73,7 @@ app.get("/api/user/:user", function(req, res) {
     });
 
     // get all senators from one state
-    app.get("api/senator/:state", function(req, res) {
+    app.get("/api/senatorByState/:state", function(req, res) {
         db.Senator.findAll({
             where: {
                 state: req.params.state
@@ -83,7 +84,7 @@ app.get("/api/user/:user", function(req, res) {
     });
 
     // get all representatives from one state
-    app.get("api/representative/:state", function(req, res) {
+    app.get("/api/representativeByState/:state", function(req, res) {
         db.Representative.findAll({
             where: {
                 state: req.params.state
@@ -112,7 +113,27 @@ app.get("/api/user/:user", function(req, res) {
     })
 
     // get all comments about a senator
+    // Sends an array of comment objects
+    app.get("api/comment/:id", function (req, res) {
+        let senatorID = req.params.id;
+        db.Comment.findAll({
+            where: { SenatorId: senatorID }
+        }).then(function (response) {
+            response = response.map(c => c.dataValues);
+            res.json(response);
+        });
+    })
     // get all comments about a representative
+    // Sends an array of comment objects
+    app.get("api/comment/:id", function (req, res) {
+        let repID = req.params.id;
+        db.Comment.findAll({
+            where: { RepresentativeId: repID }
+        }).then(function (response) {
+            response = response.map(c => c.dataValues);
+            res.json(response);
+        });
+    });
     
     // get all votes from a senator/representative
         // with party
@@ -144,9 +165,7 @@ app.get("/api/user/:user", function(req, res) {
           db.Login.create(login);
       })
 
-    })
-  
-    // post a comment on a representatives page
+
     app.post("api/representative/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
             res.json(dbComment)
@@ -162,22 +181,55 @@ app.get("/api/user/:user", function(req, res) {
 
 
 
-  };
 
     // ===========================================================================
     // QUERY REQUEST
     // ===========================================================================
 
-    // app.get("api/:branch?/:party?/:state?/:gender?/:name?", function(req, res) {
-    //     var branch = req.params.branch;
-    //     console.log(branch);
-        // var party = req.params.party;
-        // console.log(party);
-        // var state = req.params.state;
-        // console.log(state);
-        // var gender = req.params.gender;
-        // console.log(gender);
-        // var name = req.params.name;
-        // console.log(name);
-    // });
+    // SEARCH SENATORS
+    app.get("/api/senator/:party?/:state?/:gender?/:name?", function(req, res) {
+        let whereClause = {};
+        if (req.params.party !== "empty") {
+            whereClause['party'] = req.params.party;
+        }
+        if (req.params.state !== "empty") {
+            whereClause['state'] = req.params.state;
+        }
+        if (req.params.gender !== "empty") {
+            whereClause['gender'] = req.params.gender;
+        }
+        if (req.params.name !== "empty") {
+            whereClause['name'] = req.params.name;
+        }
+        console.log(whereClause);
+        db.Senator.findAll({
+            where: whereClause
+        }).then(function(dbSenators) {
+            console.log(res.json(dbSenators))
+        })
+    });
 
+    // SEARCH REPRESENTATIVES
+    app.get("/api/representative/:party?/:state?/:gender?/:name?", function(req, res) {
+        let whereClause = {};
+        if (req.params.party !== "empty") {
+            whereClause['party'] = req.params.party;
+        }
+        if (req.params.state !== "empty") {
+            whereClause['state'] = req.params.state;
+        }
+        if (req.params.gender !== "empty") {
+            whereClause['gender'] = req.params.gender;
+        }
+        if (req.params.name !== "empty") {
+            whereClause['name'] = req.params.name;
+        }
+        console.log(whereClause);
+        db.Representative.findAll({
+            where: whereClause
+        }).then(function(dbRepresentative) {
+            console.log(res.json(dbRepresentative))
+        })
+    });
+
+};
