@@ -29,6 +29,9 @@ module.exports = function (sequelize, DataTypes) {
         gender: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        crpid: {
+            type: DataTypes.STRING,
         }
     });
     Representative.associate = models => {
