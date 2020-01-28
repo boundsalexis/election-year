@@ -1,9 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Login = sequelize.define("Login", {
-        username: {
+        email: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
+                isEmail: true
+                // msg: "Must enter a valid email"
                 len: [1, 100]
             }
         },
@@ -11,7 +13,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8, 20]
+                len: {
+                    args: 4,
+                    msg: "Password but be longer than 4 characters"
+                }
             }
         }
 
