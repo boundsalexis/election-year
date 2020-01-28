@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "applebeaver",
     "database": "politics_db",
     "host": "localhost",
     "dialect": "mysql",
