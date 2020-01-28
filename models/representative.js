@@ -36,6 +36,11 @@ module.exports = function (sequelize, DataTypes) {
         models.Representative.hasMany(models.Comment, {
             onDelete: "cascade"
         })
+        models.Representative.hasOne(models.VotingRecord, {
+            onDelete: "cascade"
+        })
     }
+
+
     return Representative;
 }
