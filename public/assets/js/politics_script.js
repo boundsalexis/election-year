@@ -1,6 +1,12 @@
+
+
 $(document).ready(function() {
     //make sure everything is loaded before we start
     
+
+    
+
+
     /////////////// *********index***********/////////////////
         $("#signIn").on("submit", function(event){
             event.preventDefault();

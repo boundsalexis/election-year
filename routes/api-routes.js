@@ -1,4 +1,7 @@
 var db = require("../models");
+var chart = require("chart.js");
+
+console.log(chart);
 
 module.exports = function(app) {
 
@@ -184,8 +187,16 @@ module.exports = function(app) {
         db.Senator.findAll({
             where: whereClause
         }).then(function(dbSenators) {
-            console.log(res.json(dbSenators))
+            console.log(res.json(dbSenators));
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options
+            });
         })
+
+
+
     });
 
     // SEARCH REPRESENTATIVES
