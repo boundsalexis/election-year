@@ -1,16 +1,15 @@
 $(document).ready(function () {
 
-    var id = window.location.href;
-    console.log(id.charAt(id.length - 1));
-    id = id.charAt(id.length - 1);
+    var id = $("#info").data("id");
+    var state = $("#info").data("location");
+    localStorage.setItem("User", JSON.stringify([id, state]));
+    // console.log(JSON.parse(localStorage.getItem("User")));
+    
     displayUsersReps(id);
     function displayUsersReps(userId) {
         $.ajax("/api/user/" + userId, {
             type: "GET"
         }).then(function (response) {
-            console.log(response);
-            let state = response.location;
-            state = "CA";
             $.get("/api/senatorByState/" + state).then(function (senator) {
                 // console.log(senator);
                 for (let i = 0; i < senator.length; i++) {
