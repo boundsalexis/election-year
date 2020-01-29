@@ -32,11 +32,13 @@ app.get("/api/login/:email/:password", function(req,res){
             password:req.params.password
         }
     }).then(function(data) {
+        console.log(data);
         res.json(data.dataValues.UserId);
         console.log(data.dataValues.UserId);
   
     })
 });
+
 app.get("/api/user/:user", function(req, res) {
         db.User.findOne({
                     where: {
@@ -44,10 +46,8 @@ app.get("/api/user/:user", function(req, res) {
                     }
                 }).then(data=>{
                     console.log(data.dataValues)
-                   
                     res.render("user", data.dataValues);
                 })
-
     });
 
     // get one representative by name
@@ -141,14 +141,11 @@ app.get("/api/user/:user", function(req, res) {
         // absent etc
         // check back on this once Carlos adds this info to his models
 
-    
-
 
     // ===========================================================================
     // POST REQUESTS
     // ===========================================================================
 
-    // post new user account info
     app.post("/api/addcredential", function(req, res) {
       console.log(req.body);
       var user = {
@@ -166,13 +163,11 @@ app.get("/api/user/:user", function(req, res) {
       })
     });
 
-
     app.post("api/representative/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
             res.json(dbComment)
         })
     });
-    
     // post a comment on a representatives page
     app.post("api/senator/comments", function(req, res) {
         db.Comment.create(req.body).then(function(dbComment) {
@@ -207,15 +202,7 @@ app.get("/api/user/:user", function(req, res) {
             where: whereClause
         }).then(function(dbSenators) {
             console.log(res.json(dbSenators));
-            var myPieChart = new Chart(ctx, {
-                type: 'pie',
-                data: data,
-                options: options
-            });
         })
-
-
-
     });
 
     // SEARCH REPRESENTATIVES

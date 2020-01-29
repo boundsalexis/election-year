@@ -1,7 +1,10 @@
 
 <div class="jumbotron">
-  <h1 class="display-4">Welcome to your representatives</h1>
-  {{!-- <p class="lead">Loook at them</p> --}}
+
+  <h1 class="display-4" data-id={{id}} data-location={{location}} id="info">Welcome {{name}}</h1>
+  <p class="lead">Look at your representatives from {{location}}</p>
+
+
   <hr class="my-4">
   {{!-- ability to click on for more information --}}
   <div class="senators" >
@@ -17,6 +20,9 @@
         </table>
 </div>
 </div>
+
+<canvas id="myChart" width="100" height="100"></canvas>
+
 
 <script src="/assets/js/profile.js"></script>
 

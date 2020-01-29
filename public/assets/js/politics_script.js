@@ -203,11 +203,8 @@ $(document).on("click",".rep", loadRep)
                         }
 
                     })
-
             }
-
         };
-
     })
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
@@ -230,9 +227,10 @@ $(document).on("click",".rep", loadRep)
             console.log(res);
         })
     }
-    //lost password not functional
-    // end of doc ready listener, DONT TOUCH THIS
+// end of doc ready listener, DONT TOUCH THIS
 })
+
+
 
 
 
