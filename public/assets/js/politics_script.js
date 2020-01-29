@@ -28,6 +28,23 @@ $(document).ready(function () {
     //////
 
     ///////////////****** Search pages*********////////////
+////////functions to load individual senator pages////////////
+// $(document).querySelector('body').on('click', function() {
+//     console.log(event);
+// });
+
+ loadSenator = cheese =>{
+    console.log(event.target);
+    console.log("yeet")
+   
+    }
+ loadRep = event =>{
+     console.log("cheese");
+     console.log(event.target.id);
+    }
+$(document).on("click", ".member", loadSenator);
+$(document).on("click",".rep", loadRep)
+
     //////////house
     $("#createQuery").on("click", function (event) {
         event.preventDefault();
@@ -99,27 +116,27 @@ $(document).ready(function () {
                         + searchName;
 
                     $.get(queryString, function (data) {
+                   
                         console.log(data);
                         $("#table").empty();
                         newRow=$("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
-                    
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
                         for(let i =0; i<data.length; i++){
-                            dataRow = $("<tr>");
-                            dataRow.append("<td>"+data[i].name+"</td>");
+                            let memid=data[i].memberId;
+                            dataRow = $("<tr class='member' id="+memid+">");
+                            dataRow.append("<td id="+memid+">"+data[i].name+"</td>");
                             dataRow.append("<td>"+data[i].state+"</td>");
-                          
                             dataRow.append("<td>"+data[i].party+"</td>");
                             dataRow.append("<td>"+data[i].gender+"</td>");
                             $("#table").append(dataRow);
                         }
                     })
                     break;
-
+                    
                 case "House of Representatives":
                     // console.log("You're searching the House of Representatives!");
                     function handleUserInput() {
@@ -173,15 +190,15 @@ $(document).ready(function () {
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
-                        console.log(newRow);
+                        // console.log(newRow);
                         for(let i =0; i<data.length; i++){
-                            dataRow = $("<tr>");
+                            dataRow = $("<tr class=rep id="+data[i].fecId+">");
                             dataRow.append("<td>"+data[i].name+"</td>");
                             dataRow.append("<td>"+data[i].state+"</td>");
                             dataRow.append("<td>"+data[i].district+"</td>");
                             dataRow.append("<td>"+data[i].party+"</td>");
                             dataRow.append("<td>"+data[i].gender+"</td>");
-                            console.log(dataRow);
+                            // console.log(dataRow);
                             $("#table").append(dataRow);
                         }
 

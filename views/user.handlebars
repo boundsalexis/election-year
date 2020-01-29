@@ -1,18 +1,24 @@
 
-<div class="jumbotron container">
-  <h1 class="display-4">Welcome to your representatives</h1>
-  <p class="lead">Loook at them</p>
+<div class="jumbotron">
+
+  <h1 class="display-4" data-id={{id}} data-location={{location}} id="info">Welcome {{name}}</h1>
+  <p class="lead">Look at your representatives from {{location}}</p>
+
+
   <hr class="my-4">
   {{!-- ability to click on for more information --}}
   <div class="senators" >
       <h3>Senators</h3>
+      <table id="senators">
 
-      <ul id="senators"></ul>
-    </div>
-    <div class="house">
+      </table>
+  </div>
+  <div class="house">
         <h3>House of Representatives</h3>
-        <ul id="reps"></ul>
-    </div>
+        <table id="reps">
+
+        </table>
+</div>
 </div>
 
 <canvas id="myChart" width="100" height="100"></canvas>
