@@ -1,7 +1,7 @@
 var db = require("../models");
-var chart = require("chart.js");
+var Chart = require("chart.js");
 
-console.log(chart);
+// console.log(chart);
 
 module.exports = function(app) {
 
