@@ -186,11 +186,8 @@ $(document).ready(function () {
                         }
 
                     })
-
             }
-
         };
-
     })
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
@@ -213,9 +210,10 @@ $(document).ready(function () {
             console.log(res);
         })
     }
-    //lost password not functional
-    // end of doc ready listener, DONT TOUCH THIS
+// end of doc ready listener, DONT TOUCH THIS
 })
+
+
 
 
 
