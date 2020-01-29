@@ -149,11 +149,8 @@ $(document).ready(function () {
                     $.get(queryString, function (data) {
                         console.log(data)
                     })
-
             }
-
         };
-
     })
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
@@ -176,7 +173,7 @@ $(document).ready(function () {
             console.log(res);
         })
     }
-    // end of doc ready listener, DONT TOUCH THIS
+// end of doc ready listener, DONT TOUCH THIS
 })
 
 

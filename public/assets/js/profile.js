@@ -30,38 +30,6 @@ $(document).ready(function () {
         });
     }
 
-<<<<<<< HEAD
-    $("#profile").on("click", displayUsersReps(2));
-
-    //
-    function displayUsersReps(userId) {
-        $.ajax("/api/user/" + userId, {
-            type: "GET"
-        }).then(function (response) {
-            console.log(response);
-            let state = response.location;
-            state = "CA";
-            $.get("/api/senatorByState/" + state).then(function (senator) {
-                console.log(senator);
-                for (let i = 0; i < senator.length; i++) {
-                    var li = $("<li>");
-                    li.text(JSON.stringify(senator[i]));
-                    $("#senators").append(li);
-                }
-            });
-            $.get("/api/representativeByState/" + state).then(function (representatives) {
-                console.log(representatives);
-                for (let i = 0; i < representatives.length; i++) {
-                    var li = $("<li>");
-                    li.text(JSON.stringify(representatives[i]));
-                    $("#reps").append(li);
-                }
-            });
-        });
-    }
-
-});
-=======
     function getIndustries(crpid) {
         return new Promise(function (resolve, reject) {
             if (!crpid) reject(crpid);
@@ -82,12 +50,66 @@ $(document).ready(function () {
         });
     }
 
+
+
+
+    var allIndustries = [];
+    var industryTotals = [];
+
     //check with AOC's id
     getIndustries("N00041162").then(function (industries) {
-        console.log(industries);
+        // console.log(industries);
+        industries.forEach(element => {
+            console.log(element.industry_name + ": $" + element.total);
+            var industry_name = element.industry_name;
+            var industry_total = element.total;
+            allIndustries.push(industry_name);
+            industryTotals.push(parseInt(industry_total))
+        });
+        console.log(allIndustries);
+        console.log(industryTotals);
     });
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
+        // labels: allIndustries,
+        datasets: [{
+            label: 'Total Donated by Industry',
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            // data: industryTotals,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(233, 212, 96, 0.2)',
+                'rgba(30, 130, 76, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(191, 191, 191, 0.2)',
+                'rgba(219, 10, 91, 0.2)',
+                'rgba(78, 205, 196, 0.2)',
+                'rgba(211, 84, 0, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(233, 212, 96, 1)',
+                'rgba(30, 130, 76, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(191, 191, 191, 1)',
+                'rgba(219, 10, 91, 1)',
+                'rgba(78, 205, 196, 1)',
+                'rgba(211, 84, 0, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+});
 
 
 });
 
->>>>>>> 4e8baaaa346c4e52609b93e14eeed006d613a585
