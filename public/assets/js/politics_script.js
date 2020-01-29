@@ -40,7 +40,7 @@ $(document).ready(function () {
             gender: $("#byGender").val().trim(),
             name: $("#byname").val().trim()
         };
-
+        console.log(query);
         // INSTANTIATE GLOBAL VARIABLES FOR FUTURE USE
         var partyAbrv;
         var searchState;
@@ -99,7 +99,24 @@ $(document).ready(function () {
                         + searchName;
 
                     $.get(queryString, function (data) {
-                        console.log(data)
+                        console.log(data);
+                        $("#table").empty();
+                        newRow=$("<tr>");
+                        newRow.append("<th>Name</th>");
+                        newRow.append("<th>State</th>");
+                    
+                        newRow.append("<th>Party</th>");
+                        newRow.append("<th>Gender</th>");
+                        $("#table").append(newRow);
+                        for(let i =0; i<data.length; i++){
+                            dataRow = $("<tr>");
+                            dataRow.append("<td>"+data[i].name+"</td>");
+                            dataRow.append("<td>"+data[i].state+"</td>");
+                          
+                            dataRow.append("<td>"+data[i].party+"</td>");
+                            dataRow.append("<td>"+data[i].gender+"</td>");
+                            $("#table").append(dataRow);
+                        }
                     })
                     break;
 
@@ -148,6 +165,26 @@ $(document).ready(function () {
 
                     $.get(queryString, function (data) {
                         console.log(data)
+                        $("#table").empty();
+                        newRow=$("<tr>");
+                        newRow.append("<th>Name</th>");
+                        newRow.append("<th>State</th>");
+                        newRow.append("<th>District</th>");
+                        newRow.append("<th>Party</th>");
+                        newRow.append("<th>Gender</th>");
+                        $("#table").append(newRow);
+                        console.log(newRow);
+                        for(let i =0; i<data.length; i++){
+                            dataRow = $("<tr>");
+                            dataRow.append("<td>"+data[i].name+"</td>");
+                            dataRow.append("<td>"+data[i].state+"</td>");
+                            dataRow.append("<td>"+data[i].district+"</td>");
+                            dataRow.append("<td>"+data[i].party+"</td>");
+                            dataRow.append("<td>"+data[i].gender+"</td>");
+                            console.log(dataRow);
+                            $("#table").append(dataRow);
+                        }
+
                     })
 
             }
