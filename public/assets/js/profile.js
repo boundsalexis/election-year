@@ -11,20 +11,35 @@ $(document).ready(function () {
             console.log(response);
             let state = response.location;
             state = "CA";
-            $.get("/api/senatorByState/" + state).then(function (senator) {
-                // console.log(senator);
-                for (let i = 0; i < senator.length; i++) {
-                    var li = $("<li>");
-                    li.text(JSON.stringify(senator[i]));
-                    $("#senators").append(li);
+            $.get("/api/senatorByState/" + state).then(function (data) {
+                console.log(data);
+                newRow=$("<tr>");
+                newRow.append("<th>Name</th>");
+                console.log(newRow)
+                $("#senators").append(newRow);
+                for (let i = 0; i < data.length; i++) {
+                    dataRow =$("<tr>");
+                    dataRow.append("<td>"+data[i].name+"</td>");
+            
+                    $("#senators").append(dataRow);
+                    console.log(dataRow);
                 }
             });
-            $.get("/api/representativeByState/" + state).then(function (representatives) {
-                // console.log(representatives);
-                for (let i = 0; i < representatives.length; i++) {
-                    var li = $("<li>");
-                    li.text(JSON.stringify(representatives[i]));
-                    $("#reps").append(li);
+            $.get("/api/representativeByState/" + state).then(function (data) {
+                console.log(data);
+                newRow=$("<tr>");
+                newRow.append("<th>Name</th>");
+                newRow.append("<th>District</>");
+                $("#reps").append(newRow);
+                for (let i = 0; i < data.length; i++) {
+                    dataRow =$("<tr>");
+                    dataRow.append("<td>"+data[i].name+"</td>");
+                    dataRow.append("<td>"+data[i].district+"</td>");
+
+                    $("#reps").append(dataRow);
+                    // var li = $("<li>");
+                    // li.text(JSON.stringify(representatives[i]));
+                    // $("#reps").append(li);
                 }
             });
         });
@@ -43,7 +58,7 @@ $(document).ready(function () {
                 // console.log(industries);
                 industries = industries.map(i => i['@attributes']);
                 // console.log(industries);
-                // industries = industries.map(i => JSON.stringify(i));
+                industries = industries.map(i => JSON.stringify(i));
                 // console.log(industries);
                 resolve(industries)
             });

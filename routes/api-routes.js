@@ -8,24 +8,21 @@ module.exports = function(app) {
     // ===========================================================================
     // GET REQUESTS
     // ===========================================================================
+// I do not think these are being used
+    // app.get("/api/senator", function(req, res) {
+    //     db.Senator.findAll({})
+    //         .then(function(dbSenator) {
+    //             res.json(dbSenator)
+    //         })
+    // });
 
-    // will consolidate this into a mulptiple option route parameter api express route
-
-    // see all senators
-    app.get("/api/senator", function(req, res) {
-        db.Senator.findAll({})
-            .then(function(dbSenator) {
-                res.json(dbSenator)
-            })
-    });
-
-    // see all representatives
-    app.get("/api/representative", function(req, res) {
-        db.Representative.findAll({})
-            .then(function(dbRepresentative) {
-                res.json(dbRepresentative)
-            })
-    });
+    // // see all representatives
+    // app.get("/api/representative", function(req, res) {
+    //     db.Representative.findAll({})
+    //         .then(function(dbRepresentative) {
+    //             res.json(dbRepresentative)
+    //         })
+    // });
 //////*******************LOGIN API GET **********//////////////////
 
 app.get("/api/login/:email/:password", function(req,res){
@@ -96,24 +93,24 @@ app.get("/api/user/:user", function(req, res) {
             res.json(stateReps);
         })
     });
-
+//// i do not think these are being used
     // get all senators by party
-    app.get("api/senator/:party", function (req, res) {
-        db.Senator.findAll({
-            where: {
-                party: req.params.party
-            }
-        })
-    });
+    // app.get("api/senator/:party", function (req, res) {
+    //     db.Senator.findAll({
+    //         where: {
+    //             party: req.params.party
+    //         }
+    //     })
+    // });
 
-    // get all house representatives by party
-    app.get("api/representative/:party", function (req, res) {
-        db.Representative.findAll({
-            where: {
-                party: req.params.party
-            }
-        })
-    });
+    // // get all house representatives by party
+    // app.get("api/representative/:party", function (req, res) {
+    //     db.Representative.findAll({
+    //         where: {
+    //             party: req.params.party
+    //         }
+    //     })
+    // });
 
     // get all comments about a senator
     // Sends an array of comment objects

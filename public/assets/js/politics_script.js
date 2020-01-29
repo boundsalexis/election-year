@@ -28,6 +28,17 @@ $(document).ready(function () {
     //////
 
     ///////////////****** Search pages*********////////////
+////////functions to load individual senator pages////////////
+
+
+loadSenator = event =>{
+    console.log("iam here");
+    }
+    loadRep = event =>{
+    console.log("and here");
+    }
+
+
     //////////house
     $("#createQuery").on("click", function (event) {
         event.preventDefault();
@@ -104,22 +115,20 @@ $(document).ready(function () {
                         newRow=$("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
-                    
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
                         for(let i =0; i<data.length; i++){
                             dataRow = $("<tr>");
-                            dataRow.append("<td>"+data[i].name+"</td>");
+                            dataRow.append("<td onclick='loadSenator()'>"+data[i].name+"</td>");
                             dataRow.append("<td>"+data[i].state+"</td>");
-                          
                             dataRow.append("<td>"+data[i].party+"</td>");
                             dataRow.append("<td>"+data[i].gender+"</td>");
                             $("#table").append(dataRow);
                         }
                     })
                     break;
-
+                    
                 case "House of Representatives":
                     // console.log("You're searching the House of Representatives!");
                     function handleUserInput() {
@@ -173,15 +182,15 @@ $(document).ready(function () {
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
-                        console.log(newRow);
+                        // console.log(newRow);
                         for(let i =0; i<data.length; i++){
                             dataRow = $("<tr>");
-                            dataRow.append("<td>"+data[i].name+"</td>");
+                            dataRow.append("<td onclick='loadRep("+data[i].fecId+")'>"+data[i].name+"</td>");
                             dataRow.append("<td>"+data[i].state+"</td>");
                             dataRow.append("<td>"+data[i].district+"</td>");
                             dataRow.append("<td>"+data[i].party+"</td>");
                             dataRow.append("<td>"+data[i].gender+"</td>");
-                            console.log(dataRow);
+                            // console.log(dataRow);
                             $("#table").append(dataRow);
                         }
 
