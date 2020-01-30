@@ -10,7 +10,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             headers: { 'X-API-Key': congressAPIKey },
-            url,
+            url: "/api/login"
         };
         axios(options).then(function (response) {
             // console.log(response.data);
