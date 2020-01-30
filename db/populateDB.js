@@ -115,5 +115,5 @@ module.exports = function () {
     }
     console.log("CALLING TO POPULATE");
 
-    // populateRepresentatives();
+    populateRepresentatives();
 }
