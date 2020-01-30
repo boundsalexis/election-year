@@ -28,10 +28,9 @@ $(document).ready(function () {
     //////
 
     ///////////////****** Search pages*********////////////
-    //////////house
+
     $("#createQuery").on("click", function (event) {
         event.preventDefault();
-
         // INSTANTIATE QUERY OBJECT HANDLING USER INPUT
         var query = {
             branch: $("#byBranch").val().trim(),
@@ -40,23 +39,22 @@ $(document).ready(function () {
             gender: $("#byGender").val().trim(),
             name: $("#byname").val().trim()
         };
-        console.log(query);
         // INSTANTIATE GLOBAL VARIABLES FOR FUTURE USE
         var partyAbrv;
         var searchState;
         var genderAbrv;
         var searchName;
-
         // VALIDATIONS
         if (!query.branch && !query.party && !query.state && !query.gender && !query.name) {
-            console.log("this an empty query my friend")
+            alert("this an empty query my friend");
+            return;
         }
         else if (!query.branch) {
-            console.log("You must choose one branch to search.")
+            alert("You must choose one branch to search.");
+            return;
         } else {
             switch (query.branch) {
                 case "Senate":
-
                     function handleUserInput() {
                         // ABBREVIATES PARTY NAME FOR QUERY
                         if (query.party === "Democrats") {
@@ -104,7 +102,6 @@ $(document).ready(function () {
                         newRow=$("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
-                    
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
@@ -162,7 +159,6 @@ $(document).ready(function () {
                         searchState + "/" +
                         genderAbrv + "/"
                         + searchName;
-
                     $.get(queryString, function (data) {
                         console.log(data)
                         $("#table").empty();
@@ -184,7 +180,6 @@ $(document).ready(function () {
                             console.log(dataRow);
                             $("#table").append(dataRow);
                         }
-
                     })
             }
         };
