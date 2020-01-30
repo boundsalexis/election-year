@@ -8,22 +8,6 @@ module.exports = function (app) {
     // ===========================================================================
     // GET REQUESTS
     // ===========================================================================
-    // I do not think these are being used
-    // app.get("/api/senator", function(req, res) {
-    //     db.Senator.findAll({})
-    //         .then(function(dbSenator) {
-    //             res.json(dbSenator)
-    //         })
-    // });
-
-    // // see all representatives
-    // app.get("/api/representative", function(req, res) {
-    //     db.Representative.findAll({})
-    //         .then(function(dbRepresentative) {
-    //             res.json(dbRepresentative)
-    //         })
-    // });
-    //////*******************LOGIN API GET **********//////////////////
 
     app.get("/api/login/:email/:password", function (req, res) {
         db.Login.findOne({
@@ -45,7 +29,7 @@ module.exports = function (app) {
                 id: req.params.user
             }
         }).then(data => {
-            console.log(data.dataValues)
+            // console.log(data.dataValues)
             res.render("user", data.dataValues);
         })
     });
@@ -74,7 +58,7 @@ module.exports = function (app) {
             where:{
                 fecId:req.params.fecid
             }
-        }).then(response=>res.render("senatorprofile", response.dataValues))
+        }).then(response=>res.render("representativeprofile", response.dataValues))
     })
  
     // get one senator by name
@@ -109,27 +93,7 @@ module.exports = function (app) {
             res.json(stateReps);
         })
     });
-    //// i do not think these are being used
-    // get all senators by party
-    // app.get("api/senator/:party", function (req, res) {
-    //     db.Senator.findAll({
-    //         where: {
-    //             party: req.params.party
-    //         }
-    //     })
-    // });
 
-    // // get all house representatives by party
-    // app.get("api/representative/:party", function (req, res) {
-    //     db.Representative.findAll({
-    //         where: {
-    //             party: req.params.party
-    //         }
-    //     })
-    // });
-
-    // get all comments about a senator
-    // Sends an array of comment objects
     app.get("api/comment/:id", function (req, res) {
         let senatorID = req.params.id;
         db.Comment.findAll({
@@ -150,13 +114,6 @@ module.exports = function (app) {
             res.json(response);
         });
     });
-
-    // get all votes from a senator/representative
-    // with party
-    // present
-    // absent etc
-    // check back on this once Carlos adds this info to his models
-
 
     // ===========================================================================
     // POST REQUESTS
