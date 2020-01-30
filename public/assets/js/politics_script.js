@@ -18,32 +18,9 @@ $(document).ready(function () {
             window.location = "/api/user/" + res;
         })
     }
-    
 
-    /////////////// *********index***********/////////////////
-
-
-    //////
-    // decide if we want forgot password functionality
-    //////
 
     ///////////////****** Search pages*********////////////
-////////functions to load individual senator pages////////////
-// $(document).querySelector('body').on('click', function() {
-//     console.log(event);
-// });
-
- loadSenator = cheese =>{
-    console.log(event.target);
-    console.log("yeet")
-   
-    }
- loadRep = event =>{
-     console.log("cheese");
-     console.log(event.target.id);
-    }
-$(document).on("click", ".member", loadSenator);
-$(document).on("click",".rep", loadRep)
 
     //////////house
     $("#createQuery").on("click", function (event) {
@@ -57,7 +34,7 @@ $(document).on("click",".rep", loadRep)
             gender: $("#byGender").val().trim(),
             name: $("#byname").val().trim()
         };
-        console.log(query);
+        // console.log(query);
         // INSTANTIATE GLOBAL VARIABLES FOR FUTURE USE
         var partyAbrv;
         var searchState;
@@ -116,27 +93,26 @@ $(document).on("click",".rep", loadRep)
                         + searchName;
 
                     $.get(queryString, function (data) {
-                   
-                        console.log(data);
+
+                        // console.log(data);
                         $("#table").empty();
-                        newRow=$("<tr>");
+                        newRow = $("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
-                        for(let i =0; i<data.length; i++){
-                            let memid=data[i].memberId;
-                            dataRow = $("<tr class='member' id="+memid+">");
-                            dataRow.append("<td id="+memid+">"+data[i].name+"</td>");
-                            dataRow.append("<td>"+data[i].state+"</td>");
-                            dataRow.append("<td>"+data[i].party+"</td>");
-                            dataRow.append("<td>"+data[i].gender+"</td>");
+                        for (let i = 0; i < data.length; i++) {
+                            dataRow = $("<tr class='member'>");
+                            dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                            dataRow.append("<td>" + data[i].state + "</td>");
+                            dataRow.append("<td>" + data[i].party + "</td>");
+                            dataRow.append("<td>" + data[i].gender + "</td>");
                             $("#table").append(dataRow);
                         }
                     })
                     break;
-                    
+
                 case "House of Representatives":
                     // console.log("You're searching the House of Representatives!");
                     function handleUserInput() {
@@ -181,9 +157,9 @@ $(document).on("click",".rep", loadRep)
                         + searchName;
 
                     $.get(queryString, function (data) {
-                        console.log(data)
+                        // console.log(data)
                         $("#table").empty();
-                        newRow=$("<tr>");
+                        newRow = $("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
                         newRow.append("<th>District</th>");
@@ -191,13 +167,13 @@ $(document).on("click",".rep", loadRep)
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
                         // console.log(newRow);
-                        for(let i =0; i<data.length; i++){
-                            dataRow = $("<tr class=rep id="+data[i].fecId+">");
-                            dataRow.append("<td>"+data[i].name+"</td>");
-                            dataRow.append("<td>"+data[i].state+"</td>");
-                            dataRow.append("<td>"+data[i].district+"</td>");
-                            dataRow.append("<td>"+data[i].party+"</td>");
-                            dataRow.append("<td>"+data[i].gender+"</td>");
+                        for (let i = 0; i < data.length; i++) {
+                            dataRow = $("<tr class=rep>");
+                            dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                            dataRow.append("<td>" + data[i].state + "</td>");
+                            dataRow.append("<td>" + data[i].district + "</td>");
+                            dataRow.append("<td>" + data[i].party + "</td>");
+                            dataRow.append("<td>" + data[i].gender + "</td>");
                             // console.log(dataRow);
                             $("#table").append(dataRow);
                         }
@@ -206,6 +182,21 @@ $(document).on("click",".rep", loadRep)
             }
         };
     })
+
+
+    /////////handle table clicks////////
+    $(document).on("click", ".member", loadSenator);
+    $(document).on("click", ".rep", loadRep)
+    loadSenator = event => {
+        let query= "/api/senatorprofile/"+event.target.id;
+        window.location=query;
+    }
+    loadRep = event => {
+        let query = "/api/representativeprofile/"+event.target.id;
+        $.get(query, function(data){
+            // console.log(data);
+        })
+    }
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
     $("#newUser").on("click", function (event) {
@@ -224,10 +215,11 @@ $(document).on("click",".rep", loadRep)
     addCredential = (data) => {
 
         $.post("/api/addcredential", data).then(res => {
-            console.log(res);
+            // window.location.reload();
         })
+        document.location.reload();
     }
-// end of doc ready listener, DONT TOUCH THIS
+    // end of doc ready listener, DONT TOUCH THIS
 })
 
 
