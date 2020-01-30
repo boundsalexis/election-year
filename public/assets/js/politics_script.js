@@ -18,17 +18,14 @@ $(document).ready(function () {
             window.location = "/api/user/" + res;
         })
     }
-    
 
-    /////////////// *********index***********/////////////////
-
-
-    //////
-    // decide if we want forgot password functionality
-    //////
 
     ///////////////****** Search pages*********////////////
 
+<<<<<<< HEAD
+=======
+    //////////house
+>>>>>>> 9ab497451c4ab7c78472293cadb649cadaff01d3
     $("#createQuery").on("click", function (event) {
         event.preventDefault();
         // INSTANTIATE QUERY OBJECT HANDLING USER INPUT
@@ -39,6 +36,10 @@ $(document).ready(function () {
             gender: $("#byGender").val().trim(),
             name: $("#byname").val().trim()
         };
+<<<<<<< HEAD
+=======
+        // console.log(query);
+>>>>>>> 9ab497451c4ab7c78472293cadb649cadaff01d3
         // INSTANTIATE GLOBAL VARIABLES FOR FUTURE USE
         var partyAbrv;
         var searchState;
@@ -97,21 +98,21 @@ $(document).ready(function () {
                         + searchName;
 
                     $.get(queryString, function (data) {
-                        console.log(data);
+
+                        // console.log(data);
                         $("#table").empty();
-                        newRow=$("<tr>");
+                        newRow = $("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
-                        for(let i =0; i<data.length; i++){
-                            dataRow = $("<tr>");
-                            dataRow.append("<td>"+data[i].name+"</td>");
-                            dataRow.append("<td>"+data[i].state+"</td>");
-                          
-                            dataRow.append("<td>"+data[i].party+"</td>");
-                            dataRow.append("<td>"+data[i].gender+"</td>");
+                        for (let i = 0; i < data.length; i++) {
+                            dataRow = $("<tr class='member'>");
+                            dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                            dataRow.append("<td>" + data[i].state + "</td>");
+                            dataRow.append("<td>" + data[i].party + "</td>");
+                            dataRow.append("<td>" + data[i].gender + "</td>");
                             $("#table").append(dataRow);
                         }
                     })
@@ -160,30 +161,45 @@ $(document).ready(function () {
                         genderAbrv + "/"
                         + searchName;
                     $.get(queryString, function (data) {
-                        console.log(data)
+                        // console.log(data)
                         $("#table").empty();
-                        newRow=$("<tr>");
+                        newRow = $("<tr>");
                         newRow.append("<th>Name</th>");
                         newRow.append("<th>State</th>");
                         newRow.append("<th>District</th>");
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
-                        console.log(newRow);
-                        for(let i =0; i<data.length; i++){
-                            dataRow = $("<tr>");
-                            dataRow.append("<td>"+data[i].name+"</td>");
-                            dataRow.append("<td>"+data[i].state+"</td>");
-                            dataRow.append("<td>"+data[i].district+"</td>");
-                            dataRow.append("<td>"+data[i].party+"</td>");
-                            dataRow.append("<td>"+data[i].gender+"</td>");
-                            console.log(dataRow);
+                        // console.log(newRow);
+                        for (let i = 0; i < data.length; i++) {
+                            dataRow = $("<tr class=rep>");
+                            dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                            dataRow.append("<td>" + data[i].state + "</td>");
+                            dataRow.append("<td>" + data[i].district + "</td>");
+                            dataRow.append("<td>" + data[i].party + "</td>");
+                            dataRow.append("<td>" + data[i].gender + "</td>");
+                            // console.log(dataRow);
                             $("#table").append(dataRow);
                         }
                     })
             }
         };
     })
+
+
+    /////////handle table clicks////////
+    $(document).on("click", ".member", loadSenator);
+    $(document).on("click", ".rep", loadRep)
+    loadSenator = event => {
+        let query= "/api/senatorprofile/"+event.target.id;
+        window.location=query;
+    }
+    loadRep = event => {
+        let query = "/api/representativeprofile/"+event.target.id;
+        $.get(query, function(data){
+            // console.log(data);
+        })
+    }
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
     $("#newUser").on("click", function (event) {
@@ -202,10 +218,11 @@ $(document).ready(function () {
     addCredential = (data) => {
 
         $.post("/api/addcredential", data).then(res => {
-            console.log(res);
+            // window.location.reload();
         })
+        document.location.reload();
     }
-// end of doc ready listener, DONT TOUCH THIS
+    // end of doc ready listener, DONT TOUCH THIS
 })
 
 
