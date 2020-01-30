@@ -27,7 +27,7 @@ require("./routes/api-routes.js")(app);
 
 db.sequelize.sync().then(function () {
   // comment out to prevent table pop each time when running
-  require("./db/populateDB")();
+  // require("./db/populateDB")();
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
