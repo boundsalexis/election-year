@@ -10,7 +10,7 @@ $(document).ready(function () {
             if (!crpid) reject(crpid);
             // var OSAPIKey = "55bbf9d8ccd398720b6d6769ebe66440";
             var OSAPIKey = "9f5d48e148b27324806dd9c7d61410ce";
-            var queryurl = "https://www.opensecrets.org/api/?method=candIndustry&cid=" + crpid + "&output=json&cycle=2020&apikey=" + OSAPIKey;
+            var queryurl = "http://www.opensecrets.org/api/?method=candIndustry&cid=" + crpid + "&output=json&cycle=2020&apikey=" + OSAPIKey;
             $.get(queryurl).then(function (data) {
                 var industries = JSON.parse(data).response.industries.industry;
                 industries = industries.map(i => i['@attributes']);

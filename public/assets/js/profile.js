@@ -13,7 +13,7 @@ $(document).ready(function () {
 
             // console.log(response);
             let state = response.location;
-            state = "CA";
+            // state = "CA";
             $.get("/api/senatorByState/" + state).then(function (data) {
                 // console.log(data);
                 newRow=$("<tr>");
