@@ -10,7 +10,7 @@ module.exports = function () {
         var options = {
             method: 'GET',
             headers: { 'X-API-Key': congressAPIKey },
-            url: "/api/login"
+            url: url
         };
         axios(options).then(function (response) {
             // console.log(response.data);
@@ -62,7 +62,7 @@ module.exports = function () {
         options = {
             method: 'GET',
             headers: { 'X-API-Key': congressAPIKey },
-            url,
+            url: url
         };
         axios(options).then(function (response) {
             // console.log(response.data);
