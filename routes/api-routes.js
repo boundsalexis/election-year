@@ -74,7 +74,7 @@ module.exports = function (app) {
             where:{
                 fecId:req.params.fecid
             }
-        }).then(response=>res.render("senatorprofile", response.dataValues))
+        }).then(response=>res.render("representativeprofile", response.dataValues))
     })
  
     // get one senator by name

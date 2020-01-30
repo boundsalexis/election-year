@@ -22,10 +22,6 @@ $(document).ready(function () {
 
     ///////////////****** Search pages*********////////////
 
-<<<<<<< HEAD
-=======
-    //////////house
->>>>>>> 9ab497451c4ab7c78472293cadb649cadaff01d3
     $("#createQuery").on("click", function (event) {
         event.preventDefault();
         // INSTANTIATE QUERY OBJECT HANDLING USER INPUT
@@ -36,10 +32,6 @@ $(document).ready(function () {
             gender: $("#byGender").val().trim(),
             name: $("#byname").val().trim()
         };
-<<<<<<< HEAD
-=======
-        // console.log(query);
->>>>>>> 9ab497451c4ab7c78472293cadb649cadaff01d3
         // INSTANTIATE GLOBAL VARIABLES FOR FUTURE USE
         var partyAbrv;
         var searchState;
@@ -188,18 +180,19 @@ $(document).ready(function () {
 
 
     /////////handle table clicks////////
-    $(document).on("click", ".member", loadSenator);
-    $(document).on("click", ".rep", loadRep)
+
     loadSenator = event => {
         let query= "/api/senatorprofile/"+event.target.id;
         window.location=query;
     }
     loadRep = event => {
         let query = "/api/representativeprofile/"+event.target.id;
-        $.get(query, function(data){
-            // console.log(data);
-        })
+        window.location=query;
     }
+
+    $(document).on("click", ".member", loadSenator);
+    $(document).on("click", ".rep", loadRep)
+
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
     $("#newUser").on("click", function (event) {
