@@ -189,9 +189,7 @@ loadSenator = event => {
 }
 loadRep = event => {
     let query = "/api/representativeprofile/"+event.target.id;
-    $.get(query, function(data){
-        // console.log(data);
-    })
+    window.location=query;
 }
 //
     /////////handle table clicks////////
