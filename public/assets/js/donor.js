@@ -20,10 +20,13 @@ $(document).ready(function () {
         });
     }
 
+var currentCRPID = document.getElementById('currentRepID').innerHTML;
+console.log(currentCRPID);
 
+// console.log(crpid)
    
     //check with AOC's id
-    getIndustries("N00041162").then(function (industries) {
+    getIndustries(currentCRPID).then(function (industries) {
         // console.log(industries);
         industries.forEach(element => {
             console.log(element.industry_name + ": $" + element.total);
