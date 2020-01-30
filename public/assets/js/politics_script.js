@@ -183,7 +183,7 @@ $(document).ready(function () {
         };
     })
 ///
-
+//
     /////////handle table clicks////////
     $(document).on("click", ".member", loadSenator);
     $(document).on("click", ".rep", loadRep)
