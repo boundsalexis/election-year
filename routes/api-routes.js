@@ -4,7 +4,9 @@ var Chart = require("chart.js");
 // console.log(chart);
 
 module.exports = function (app) {
-
+    app.get("/",function(req,res){
+        res.render("index");
+    })
     // ===========================================================================
     // GET REQUESTS
     // ===========================================================================

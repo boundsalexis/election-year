@@ -177,8 +177,16 @@ $(document).ready(function () {
             }
         };
     })
-
-
+///
+loadSenator = event => {
+    let query= "/api/senatorprofile/"+event.target.id;
+    window.location=query;
+}
+loadRep = event => {
+    let query = "/api/representativeprofile/"+event.target.id;
+    window.location=query;
+}
+//
     /////////handle table clicks////////
 
     loadSenator = event => {
@@ -189,10 +197,8 @@ $(document).ready(function () {
         let query = "/api/representativeprofile/"+event.target.id;
         window.location=query;
     }
-
     $(document).on("click", ".member", loadSenator);
     $(document).on("click", ".rep", loadRep)
-
 
     ////////////// //*********************SIGN UP ******/ ////////////// 
     $("#newUser").on("click", function (event) {
