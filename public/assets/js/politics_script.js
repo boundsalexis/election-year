@@ -1,6 +1,12 @@
 
 $(document).ready(function () {
     //make sure everything is loaded before we start
+    
+    //modify profile route if user is logged in
+    if (localStorage.getItem("User")) {
+        var id = JSON.parse(localStorage.getItem("User"))[0];
+        $("#profile").attr("href", "/api/user/" + id)
+    }
 
     /////////////// *********index***********/////////////////
     $("#signIn").on("submit", function (event) {
