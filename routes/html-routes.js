@@ -2,10 +2,19 @@
 
 var path = require("path");
 
+var loadedTables = false;
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        res.render("index");
+
+        if (loadedTables === false) {
+            loadedTables = true;
+            require("../db/populateDB")();
+            res.render("index");
+        } else if (loadedTables === true) {
+            res.render("index");
+        }
+
     })
     app.get("/profile", function (req, res) {
         res.render("user");
