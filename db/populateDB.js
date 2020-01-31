@@ -5,12 +5,12 @@ module.exports = function () {
     function populateRepresentatives() {
 
         var congressAPIKey = "UFPeOmK8QV2coqMTmy2Fz2cEPZeVOe0hGJsPngJd";
-        var qurl = "https://api.propublica.org/congress/v1/116/senate/members.json";
+        var url = "https://api.propublica.org/congress/v1/116/senate/members.json";
 
         var options = {
             method: 'GET',
             headers: { 'X-API-Key': congressAPIKey },
-            url: qurl
+            url: url
         };
         axios(options).then(function (response) {
             // console.log(response.data);
@@ -58,11 +58,11 @@ module.exports = function () {
             console.log(error.config);
         });
 
-        qurl = "https://api.propublica.org/congress/v1/116/house/members.json";
+        url = "https://api.propublica.org/congress/v1/116/house/members.json";
         options = {
             method: 'GET',
             headers: { 'X-API-Key': congressAPIKey },
-            url: qurl
+            url: url
         };
         axios(options).then(function (response) {
             // console.log(response.data);
