@@ -1,12 +1,13 @@
 # Tin Foil Hat
 
-Tin Foil Hat informs users about their congressional representatives and their campaign finance donation history
+Tin Foil Hat informs users about their congressional representatives and their campaign finance donation history.
 
 ## Site Pictures
 
 1. Search Functionality
 
 ![Site](public/assets/img/app_demo.gif)
+
 
 2. Profile Demo
 
@@ -28,13 +29,21 @@ Tin Foil Hat informs users about their congressional representatives and their c
 * [Express](https://www.npmjs.com/package/express)
 * [MySQL](https://www.mysql.com/)
 * [Handlebars](https://handlebarsjs.com/)
-
+* [Charts.JS](https://www.chartjs.org/) 
 
 ## Authors
 
  * **Alexis Bounds**
- * **Ian Toy** 
- * **Carlos Toledo** 
+    - [GitHub](https://github.com/boundsalexis) 
+    - [LinkedIn](https://www.linkedin.com/in/boundsalexis/)
+
+ * **Ian Toy**
+    - [GitHub](https://github.com/ietoy)
+    - [LinkedIn](https://www.linkedin.com/in/ian-toy-265077196/)
+
+ * **Carlos Toledo**
+    - [GitHub](https://github.com/kqarlos)
+    - [LinkedIn](https://www.linkedin.com/in/carlos-toledo415/)
 
 ## Github Links
 
