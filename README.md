@@ -89,6 +89,35 @@ module.exports = function (sequelize, DataTypes) {
 ```
 * This is our definition for the user model. We had a simple model with a name and a location. Both of these fields had some validations that check the data before getting inserted into the table. Before the end of our model definition we inserted an association to the Login table. This one-to-one relationship will ensure that a login object can reference a unique User object.
 
+3. Handlebars
+
+``` HTML
+
+
+<div class="jumbotron">
+
+  <h1 class="display-4" data-id={{id}} data-location={{location}} id="info">Welcome {{name}}</h1>
+  <p class="lead">Look at your representatives from {{location}}</p>
+
+
+  <hr class="my-4">
+  <div class="senators" >
+      <h3>Senators</h3>
+      <table id="senators">
+
+      </table>
+  </div>
+  <div class="house">
+        <h3>House of Representatives</h3>
+        <table id="reps">
+
+        </table>
+</div>
+</div>
+
+
+```
+* Handlebars makes HTML more flexible b giving us the ability to work with objects. This handlebar takes care of displaying the user data passed on from the server-side. Not only does it display the logged-in user's name and location, it also hides user data such as user id inside the HTML. This allows for the user to feel a more personalized experience and for the developer to have easy access to commonly needed user data.
 
 ## Built With
 
