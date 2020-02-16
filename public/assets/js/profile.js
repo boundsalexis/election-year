@@ -23,7 +23,7 @@ $(document).ready(function () {
                 $("#senators").append(newRow);
                 for (let i = 0; i < data.length; i++) {
                     dataRow = $("<tr class='member'>");
-                    dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                    dataRow.append("<td class='name' id=" + data[i].fecId + ">" + data[i].name + "</td>");
 
                     $("#senators").append(dataRow);
                     // console.log(dataRow);
@@ -38,7 +38,7 @@ $(document).ready(function () {
                 $("#reps").append(newRow);
                 for (let i = 0; i < data.length; i++) {
                     dataRow = $("<tr class='rep'>");
-                    dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                    dataRow.append("<td class='name' id=" + data[i].fecId + ">" + data[i].name + "</td>");
                     dataRow.append("<td>" + data[i].district + "</td>");
 
                     $("#reps").append(dataRow);

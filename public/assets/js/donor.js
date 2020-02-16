@@ -38,6 +38,13 @@ console.log(currentCRPID);
         var myChart = new Chart(ctx, {
             responsive:true,
             type: 'pie',
+            options:{
+                legend:{
+                    labels:{
+                        fontColor: "black"
+                    }
+                }
+            },
             data: {
                 labels: allIndustries,
                 datasets: [{

@@ -1,14 +1,21 @@
 .senators{
     float:left;
+    /* margin: auto; */
 }
 .house{
     float:right;
+    /* margin: auto; */
 }
-
+#manip{
+    /* width: fit-content; */
+    width: 70%;
+    /* background-color: ; */
+}
 #table{
-    width:60%;
+    width:fit-content;
     font-size: large;
     margin: auto;
+    /* border:1px solid orange; */
 }
 #senators{
     width:100%;
@@ -21,16 +28,24 @@
     /* padding: 15px; */
 
 }
+.navbar{
+background-color: #F1EBFA !important;
+}
 .jumbotron{
     overflow: auto;
+    background-color: #bccad6 !important;
+
+/* background-color: #8d9db6 !important; */
+    /* background-image: url("/assets/img/topography.png") !important; */
+
 }
 th, td {
     padding: 15px;
     text-align: left;
-    border-bottom:1px dotted black;
+    /* border-bottom:1px dotted black; */
   }
-  td:hover {
-      background-color: orange;
+  .name:hover {
+      background-color: #B58BB0;
   }
 
 .rep{
@@ -41,4 +56,26 @@ th, td {
 }
 ul{
     padding-inline-start: 0px;
+
+}
+.nav-item{
+    color: black !important;
+
+}
+/* body{
+    height: 100vh;
+} */
+body{
+    background-color: #8d9db6 !important;
+
+   /* background-color: #bccad6 !important; */
+}
+/* canvas{
+    background-color: white;
+} */
+button{
+    border-radius: 2px;
+    border: 2px solid black !important;
+    background-color: #B58BB0 !important;
+    color: black !important;
 }
