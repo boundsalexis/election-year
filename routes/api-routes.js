@@ -2,7 +2,7 @@ var db = require("../models");
 var Chart = require("chart.js");
 
 // console.log(chart);
-
+//hello
 module.exports = function (app) {
     app.get("/",function(req,res){
         res.render("index");
