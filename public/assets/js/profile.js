@@ -5,7 +5,7 @@ $(document).ready(function () {
     var id = $("#info").data("id");
     var state = $("#info").data("location");
     if (state) {
-        localStorage.setItem("User", JSON.stringify([id, state])); 
+        localStorage.setItem("User", JSON.stringify([id, state]));
         displayUsersReps(id);
     }
 

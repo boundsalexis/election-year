@@ -1,17 +1,17 @@
-# Tin Foil Hat
+# Election Year
 
-Tin Foil Hat informs users about their congressional representatives and their campaign finance donation history.
+Election Year informs users about their congressional representatives and their campaign finance donation history.
 
 ## Site Pictures
 
 1. Search Functionality
 
-![Site](public/assets/img/app_demo.gif)
+![Site](public/assets/img/searchfunct.gif)
 
 
 2. Profile Demo
 
-![Site](public/assets/img/profile.gif)
+![Site](public/assets/img/login.gif)
 
 
 3. Database population
@@ -93,31 +93,34 @@ module.exports = function (sequelize, DataTypes) {
 
 ``` HTML
 
-
 <div class="jumbotron">
 
   <h1 class="display-4" data-id={{id}} data-location={{location}} id="info">Welcome {{name}}</h1>
-  <p class="lead">Look at your representatives from {{location}}</p>
+  <p class="lead">Your Representatives From {{location}}!</p>
 
 
   <hr class="my-4">
-  <div class="senators" >
+  <div class="container" id="manip">
+    <div class="senators">
       <h3>Senators</h3>
       <table id="senators">
+      </table>
+    </div>
+    <div class="house">
+      <h3>House of Representatives</h3>
+      <table id="reps">
 
       </table>
-  </div>
-  <div class="house">
-        <h3>House of Representatives</h3>
-        <table id="reps">
+    </div>
 
-        </table>
-</div>
+
+  </div>
+
 </div>
 
 
 ```
-* Handlebars makes HTML more flexible b giving us the ability to work with objects. This handlebar takes care of displaying the user data passed on from the server-side. Not only does it display the logged-in user's name and location, it also hides user data such as user id inside the HTML. This allows for the user to feel a more personalized experience and for the developer to have easy access to commonly needed user data.
+* Handlebars makes HTML more flexible by giving us the ability to work with objects. This handlebar takes care of displaying the user data passed on from the server-side. Not only does it display the logged-in user's name and location, it also hides user data such as user id inside the HTML. This allows for the user to feel a more personalized experience and for the developer to have easy access to commonly needed user data.
 
 ## Built With
 
@@ -147,7 +150,7 @@ module.exports = function (sequelize, DataTypes) {
 
 ## Github Links
 
-- [Link to site repository](https://github.com/boundsalexis/tinfoil-hat)
+- [Link to site repository](https://github.com/boundsalexis/election-year)
 - [Alexis Bounds](https://github.com/boundsalexis)
 - [Ian Toy](https://github.com/ietoy)
 - [Carlos Toledo](https://www.github.com/kqarlos)

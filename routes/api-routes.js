@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
     //render homepage
-    app.get("/",function(req,res){
+    app.get("/", function (req, res) {
         res.render("index");
     })
     // ===========================================================================
@@ -42,56 +42,58 @@ module.exports = function (app) {
         })
     });
     //render individual senator page
-    app.get("/api/senatorprofile/:fecid", function(req,res){
+    app.get("/api/senatorprofile/:fecid", function (req, res) {
         db.Senator.findOne({
-            where:{
+            where: {
                 fecId: req.params.fecid
             }
-        }).then(response=>{
+        }).then(response => {
             let editResponse = response.dataValues;
-            if (editResponse.party ==="R"){
+            if (editResponse.party === "R") {
                 editResponse.party = "Republican";
             }
-            else if (editResponse.party ==="D"){
+            else if (editResponse.party === "D") {
                 editResponse.party = "Democrat";
             }
-            else if (editResponse.party ==="ID"){
-                editResponse.party ="Independent"
+            else if (editResponse.party === "ID") {
+                editResponse.party = "Independent"
             }
-            if (editResponse.gender==="F"){
+            if (editResponse.gender === "F") {
                 editResponse.gender = "Female";
             }
-            else{
+            else {
                 editResponse.gender = "Male";
             }
-            res.render("senatorprofile", editResponse)});
+            res.render("senatorprofile", editResponse)
+        });
     })
     //render individual representative page
-    app.get("/api/representativeprofile/:fecid", function(req,res){
+    app.get("/api/representativeprofile/:fecid", function (req, res) {
         db.Representative.findOne({
-            where:{
-                fecId:req.params.fecid
+            where: {
+                fecId: req.params.fecid
             }
-        }).then(response=>{
+        }).then(response => {
             let editResponse = response.dataValues;
-            if (editResponse.party ==="R"){
+            if (editResponse.party === "R") {
                 editResponse.party = "Republican";
             }
-            else if (editResponse.party ==="D"){
+            else if (editResponse.party === "D") {
                 editResponse.party = "Democrat";
             }
-            else if (editResponse.party ==="ID"){
-                editResponse.party ="Independent"
+            else if (editResponse.party === "ID") {
+                editResponse.party = "Independent"
             }
-            if (editResponse.gender==="F"){
+            if (editResponse.gender === "F") {
                 editResponse.gender = "Female";
             }
-            else{
+            else {
                 editResponse.gender = "Male";
             }
-            res.render("representativeprofile", editResponse)});
+            res.render("representativeprofile", editResponse)
+        });
     })
-    
+
     //unused
     // // get one senator by name
     // app.get("/api/senatorByName/:name", function (req, res) {
@@ -127,8 +129,8 @@ module.exports = function (app) {
             res.json(stateReps);
         })
     });
-    
-    
+
+
     //relevant when we add comment functionality
     // app.get("api/comment/:id", function (req, res) {
     //     let senatorID = req.params.id;
@@ -233,7 +235,7 @@ module.exports = function (app) {
         db.Representative.findAll({
             where: whereClause
         }).then(function (dbRepresentative) {
-           res.json(dbRepresentative)
+            res.json(dbRepresentative)
         })
     });
 

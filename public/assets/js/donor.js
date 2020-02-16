@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     var ctx = document.getElementById('myChart').getContext('2d');
 
     var allIndustries = [];
@@ -19,9 +19,9 @@ $(document).ready(function () {
             });
         });
     }
-// when rep page is loaded the crpid is on the page but it is hidden, we grab it
-var currentCRPID = document.getElementById('currentRepID').innerHTML;
-// use the crpid and the open secret api to get info for chart
+    // when rep page is loaded the crpid is on the page but it is hidden, we grab it
+    var currentCRPID = document.getElementById('currentRepID').innerHTML;
+    // use the crpid and the open secret api to get info for chart
     getIndustries(currentCRPID).then(function (industries) {
         industries.forEach(element => {
             allIndustries.push(element.industry_name);
@@ -29,11 +29,11 @@ var currentCRPID = document.getElementById('currentRepID').innerHTML;
 
         });
         var myChart = new Chart(ctx, {
-            responsive:true,
+            responsive: true,
             type: 'pie',
-            options:{
-                legend:{
-                    labels:{
+            options: {
+                legend: {
+                    labels: {
                         fontColor: "black"
                     }
                 }

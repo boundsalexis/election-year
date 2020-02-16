@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     //make sure everything is loaded before we start
-    
+
     //modify profile route if user is logged in
     if (localStorage.getItem("User")) {
         var id = JSON.parse(localStorage.getItem("User"))[0];
@@ -177,24 +177,24 @@ $(document).ready(function () {
             }
         };
     })
-///
-loadSenator = event => {
-    let query= "/api/senatorprofile/"+event.target.id;
-    window.location=query;
-}
-loadRep = event => {
-    let query = "/api/representativeprofile/"+event.target.id;
-    window.location=query;
-}
+    ///
+    loadSenator = event => {
+        let query = "/api/senatorprofile/" + event.target.id;
+        window.location = query;
+    }
+    loadRep = event => {
+        let query = "/api/representativeprofile/" + event.target.id;
+        window.location = query;
+    }
     /////////handle table clicks////////
 
     loadSenator = event => {
-        let query= "/api/senatorprofile/"+event.target.id;
-        window.location=query;
+        let query = "/api/senatorprofile/" + event.target.id;
+        window.location = query;
     }
     loadRep = event => {
-        let query = "/api/representativeprofile/"+event.target.id;
-        window.location=query;
+        let query = "/api/representativeprofile/" + event.target.id;
+        window.location = query;
     }
     $(document).on("click", ".member", loadSenator);
     $(document).on("click", ".rep", loadRep)
