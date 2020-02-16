@@ -36,6 +36,7 @@ console.log(currentCRPID);
         });
         console.log(industryTotals);
         var myChart = new Chart(ctx, {
+            responsive:true,
             type: 'pie',
             data: {
                 labels: allIndustries,

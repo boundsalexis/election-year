@@ -52,7 +52,24 @@ module.exports = function (app) {
             where:{
                 fecId: req.params.fecid
             }
-        }).then(response=>res.render("senatorprofile", response.dataValues));
+        }).then(response=>{
+            let editResponse = response.dataValues;
+            if (editResponse.party ==="R"){
+                editResponse.party = "Republican";
+            }
+            else if (editResponse.party ==="D"){
+                editResponse.party = "Democrat";
+            }
+            else if (editResponse.party ==="ID"){
+                editResponse.party ="Independent"
+            }
+            if (editResponse.gender==="F"){
+                editResponse.gender = "Female";
+            }
+            else{
+                editResponse.gender = "Male";
+            }
+            res.render("senatorprofile", editResponse)});
     })
     
     app.get("/api/representativeprofile/:fecid", function(req,res){
@@ -60,8 +77,26 @@ module.exports = function (app) {
             where:{
                 fecId:req.params.fecid
             }
-        }).then(response=>res.render("representativeprofile", response.dataValues))
+        }).then(response=>{
+            let editResponse = response.dataValues;
+            if (editResponse.party ==="R"){
+                editResponse.party = "Republican";
+            }
+            else if (editResponse.party ==="D"){
+                editResponse.party = "Democrat";
+            }
+            else if (editResponse.party ==="ID"){
+                editResponse.party ="Independent"
+            }
+            if (editResponse.gender==="F"){
+                editResponse.gender = "Female";
+            }
+            else{
+                editResponse.gender = "Male";
+            }
+            res.render("representativeprofile", editResponse)});
     })
+    
  
     // get one senator by name
     app.get("/api/senatorByName/:name", function (req, res) {

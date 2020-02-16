@@ -38,11 +38,11 @@ db.sequelize.sync().then(function () {
   // comment out to prevent table pop each time when running
   
   //Get all senators. If response is empty we need to populate tables
-  db.Senator.findAll({}).then(function (res) {
-    if (res.length === 0) {
-      require("./db/populateDB")();
-    }
-  });
+  // db.Senator.findAll({}).then(function (res) {
+  //   if (res.length === 0) {
+  //     require("./db/populateDB")();
+  //   }
+  // });
 
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
