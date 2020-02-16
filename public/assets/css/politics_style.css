@@ -8,6 +8,7 @@
 #table{
     width:60%;
     font-size: large;
+    margin: auto;
 }
 #senators{
     width:100%;
@@ -17,6 +18,7 @@
 #reps{
     width:100%;
     font-size: large;
+    /* padding: 15px; */
 
 }
 .jumbotron{
@@ -27,7 +29,16 @@ th, td {
     text-align: left;
     border-bottom:1px dotted black;
   }
+  td:hover {
+      background-color: orange;
+  }
 
-/* .hide{
-    display: none;
-} */
+.rep{
+    width: fit-content;
+    margin-top: 10px;
+    margin: auto;
+    padding: 15px;
+}
+ul{
+    padding-inline-start: 0px;
+}
