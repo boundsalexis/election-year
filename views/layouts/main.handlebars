@@ -3,17 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 		<link rel="stylesheet" href="/assets/css/politics_style.css" type="text/css" />
-		<title>MVC politics!</title>
+		<title>Election Year</title>
+    <link rel="icon" 
+      type="image/png" 
+      href="/assets/img/TFH_logo.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<script src="/assets/js/politics_script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 	</head>
 	<body>
-    <div class="container">
-	<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="/assets/img/politicalicon.png" width="80" height="50" class="d-inline-block align-top" alt="">
+    <div class="container" id="background">
+	<nav class="navbar navbar-light ">
+  <a class="navbar-brand" href="/">
+    <img src="/assets/img/TFH_logo.png" width="80" height="70" class="d-inline-block align-top" alt="" >
 </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,11 +26,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="/search/congress">Search Congress</a>
       </li>
   
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="/profile" id="profile">Profile</a>
       </li>
     </ul>

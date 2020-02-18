@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     var ctx = document.getElementById('myChart').getContext('2d');
 
     var allIndustries = [];
@@ -19,24 +19,25 @@ $(document).ready(function () {
             });
         });
     }
-
-var currentCRPID = document.getElementById('currentRepID').innerHTML;
-console.log(currentCRPID);
-
-// console.log(crpid)
-   
-    //check with AOC's id
+    // when rep page is loaded the crpid is on the page but it is hidden, we grab it
+    var currentCRPID = document.getElementById('currentRepID').innerHTML;
+    // use the crpid and the open secret api to get info for chart
     getIndustries(currentCRPID).then(function (industries) {
-        // console.log(industries);
         industries.forEach(element => {
-            console.log(element.industry_name + ": $" + element.total);
             allIndustries.push(element.industry_name);
             industryTotals.push(parseInt(element.total));
 
         });
-        console.log(industryTotals);
         var myChart = new Chart(ctx, {
+            responsive: true,
             type: 'pie',
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: "black"
+                    }
+                }
+            },
             data: {
                 labels: allIndustries,
                 datasets: [{

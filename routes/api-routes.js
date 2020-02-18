@@ -1,16 +1,14 @@
 var db = require("../models");
-var Chart = require("chart.js");
-
-// console.log(chart);
 
 module.exports = function (app) {
-    app.get("/",function(req,res){
+    //render homepage
+    app.get("/", function (req, res) {
         res.render("index");
     })
     // ===========================================================================
     // GET REQUESTS
     // ===========================================================================
-
+    //login validation
     app.get("/api/login/:email/:password", function (req, res) {
         db.Login.findOne({
             where: {
@@ -18,20 +16,17 @@ module.exports = function (app) {
                 password: req.params.password
             }
         }).then(function (data) {
-            console.log(data);
             res.json(data.dataValues.UserId);
-            console.log(data.dataValues.UserId);
 
         })
     });
-
+    //load profile page
     app.get("/api/user/:user", function (req, res) {
         db.User.findOne({
             where: {
                 id: req.params.user
             }
         }).then(data => {
-            // console.log(data.dataValues)
             res.render("user", data.dataValues);
         })
     });
@@ -46,34 +41,73 @@ module.exports = function (app) {
             res.json(dbRepresentative);
         })
     });
-
-    app.get("/api/senatorprofile/:fecid", function(req,res){
-        db.Senator.findOne({
-            where:{
-                fecId: req.params.fecid
-            }
-        }).then(response=>res.render("senatorprofile", response.dataValues));
-    })
-    
-    app.get("/api/representativeprofile/:fecid", function(req,res){
-        db.Representative.findOne({
-            where:{
-                fecId:req.params.fecid
-            }
-        }).then(response=>res.render("representativeprofile", response.dataValues))
-    })
- 
-    // get one senator by name
-    app.get("/api/senatorByName/:name", function (req, res) {
+    //render individual senator page
+    app.get("/api/senatorprofile/:fecid", function (req, res) {
         db.Senator.findOne({
             where: {
-                name: req.params.name
+                fecId: req.params.fecid
             }
-        }).then(function (dbSenator) {
-            res.json(dbSenator);
-        })
-    });
+        }).then(response => {
+            let editResponse = response.dataValues;
+            if (editResponse.party === "R") {
+                editResponse.party = "Republican";
+            }
+            else if (editResponse.party === "D") {
+                editResponse.party = "Democrat";
+            }
+            else if (editResponse.party === "ID") {
+                editResponse.party = "Independent"
+            }
+            if (editResponse.gender === "F") {
+                editResponse.gender = "Female";
+            }
+            else {
+                editResponse.gender = "Male";
+            }
+            res.render("senatorprofile", editResponse)
+        });
+    })
+    //render individual representative page
+    app.get("/api/representativeprofile/:fecid", function (req, res) {
+        db.Representative.findOne({
+            where: {
+                fecId: req.params.fecid
+            }
+        }).then(response => {
+            let editResponse = response.dataValues;
+            if (editResponse.party === "R") {
+                editResponse.party = "Republican";
+            }
+            else if (editResponse.party === "D") {
+                editResponse.party = "Democrat";
+            }
+            else if (editResponse.party === "ID") {
+                editResponse.party = "Independent"
+            }
+            if (editResponse.gender === "F") {
+                editResponse.gender = "Female";
+            }
+            else {
+                editResponse.gender = "Male";
+            }
+            res.render("representativeprofile", editResponse)
+        });
+    })
 
+    //unused
+    // // get one senator by name
+    // app.get("/api/senatorByName/:name", function (req, res) {
+    //     db.Senator.findOne({
+    //         where: {
+    //             name: req.params.name
+    //         }
+    //     }).then(function (dbSenator) {
+    //         res.json(dbSenator);
+    //     })
+    // });
+
+
+    // for user profile page 
     // get all senators from one state
     app.get("/api/senatorByState/:state", function (req, res) {
         db.Senator.findAll({
@@ -96,33 +130,37 @@ module.exports = function (app) {
         })
     });
 
-    app.get("api/comment/:id", function (req, res) {
-        let senatorID = req.params.id;
-        db.Comment.findAll({
-            where: { SenatorId: senatorID }
-        }).then(function (response) {
-            response = response.map(c => c.dataValues);
-            res.json(response);
-        });
-    });
+
+    //relevant when we add comment functionality
+    // app.get("api/comment/:id", function (req, res) {
+    //     let senatorID = req.params.id;
+    //     db.Comment.findAll({
+    //         where: { SenatorId: senatorID }
+    //     }).then(function (response) {
+    //         response = response.map(c => c.dataValues);
+    //         res.json(response);
+    //     });
+    // });
     // get all comments about a representative
     // Sends an array of comment objects
-    app.get("api/comment/:id", function (req, res) {
-        let repID = req.params.id;
-        db.Comment.findAll({
-            where: { RepresentativeId: repID }
-        }).then(function (response) {
-            response = response.map(c => c.dataValues);
-            res.json(response);
-        });
-    });
+    // app.get("api/comment/:id", function (req, res) {
+    //     let repID = req.params.id;
+    //     db.Comment.findAll({
+    //         where: { RepresentativeId: repID }
+    //     }).then(function (response) {
+    //         response = response.map(c => c.dataValues);
+    //         res.json(response);
+    //     });
+    // });
+
+
+
 
     // ===========================================================================
     // POST REQUESTS
     // ===========================================================================
-
+    //sign up
     app.post("/api/addcredential", function (req, res) {
-        console.log(req.body);
         var user = {
             name: req.body.name,
             location: req.body.location
@@ -137,18 +175,18 @@ module.exports = function (app) {
             db.Login.create(login);
         })
     });
-
-    app.post("/api/representative/comments", function (req, res) {
-        db.Comment.create(req.body).then(function (dbComment) {
-            res.json(dbComment)
-        })
-    });
-    // post a comment on a representatives page
-    app.post("/api/senator/comments", function (req, res) {
-        db.Comment.create(req.body).then(function (dbComment) {
-            res.json(dbComment)
-        })
-    });
+    // relevant once we add comment functionality
+    // app.post("/api/representative/comments", function (req, res) {
+    //     db.Comment.create(req.body).then(function (dbComment) {
+    //         res.json(dbComment)
+    //     })
+    // });
+    // // post a comment on a representatives page
+    // app.post("/api/senator/comments", function (req, res) {
+    //     db.Comment.create(req.body).then(function (dbComment) {
+    //         res.json(dbComment)
+    //     })
+    // });
 
 
 
@@ -172,11 +210,10 @@ module.exports = function (app) {
         if (req.params.name !== "empty") {
             whereClause['name'] = req.params.name;
         }
-        console.log(whereClause);
         db.Senator.findAll({
             where: whereClause
         }).then(function (dbSenators) {
-            console.log(res.json(dbSenators));
+            res.json(dbSenators);
         })
     });
 
@@ -195,11 +232,10 @@ module.exports = function (app) {
         if (req.params.name !== "empty") {
             whereClause['name'] = req.params.name;
         }
-        console.log(whereClause);
         db.Representative.findAll({
             where: whereClause
         }).then(function (dbRepresentative) {
-            console.log(res.json(dbRepresentative))
+            res.json(dbRepresentative)
         })
     });
 

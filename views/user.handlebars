@@ -1,27 +1,28 @@
-
 <div class="jumbotron">
 
   <h1 class="display-4" data-id={{id}} data-location={{location}} id="info">Welcome {{name}}</h1>
-  <p class="lead">Look at your representatives from {{location}}</p>
+  <p class="lead">Your Representatives From {{location}}!</p>
 
 
   <hr class="my-4">
-  {{!-- ability to click on for more information --}}
-  <div class="senators" >
+  <div class="container" id="manip">
+    <div class="senators">
       <h3>Senators</h3>
       <table id="senators">
+      </table>
+    </div>
+    <div class="house">
+      <h3>House of Representatives</h3>
+      <table id="reps">
 
       </table>
-  </div>
-  <div class="house">
-        <h3>House of Representatives</h3>
-        <table id="reps">
+    </div>
 
-        </table>
-</div>
+
+  </div>
+
 </div>
 
 
 
 <script src="/assets/js/profile.js"></script>
-

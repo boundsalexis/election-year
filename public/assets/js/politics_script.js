@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     //make sure everything is loaded before we start
-    
+
     //modify profile route if user is logged in
     if (localStorage.getItem("User")) {
         var id = JSON.parse(localStorage.getItem("User"))[0];
@@ -45,11 +45,11 @@ $(document).ready(function () {
         var searchName;
         // VALIDATIONS
         if (!query.branch && !query.party && !query.state && !query.gender && !query.name) {
-            alert("this an empty query my friend");
+            $("#searcherror").modal('show');
             return;
         }
         else if (!query.branch) {
-            alert("You must choose one branch to search.");
+            $("#searcherror").modal('show');
             return;
         } else {
             switch (query.branch) {
@@ -96,8 +96,6 @@ $(document).ready(function () {
                         + searchName;
 
                     $.get(queryString, function (data) {
-
-                        // console.log(data);
                         $("#table").empty();
                         newRow = $("<tr>");
                         newRow.append("<th>Name</th>");
@@ -107,7 +105,7 @@ $(document).ready(function () {
                         $("#table").append(newRow);
                         for (let i = 0; i < data.length; i++) {
                             dataRow = $("<tr class='member'>");
-                            dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                            dataRow.append("<td class='name' id=" + data[i].fecId + ">" + data[i].name + "</td>");
                             dataRow.append("<td>" + data[i].state + "</td>");
                             dataRow.append("<td>" + data[i].party + "</td>");
                             dataRow.append("<td>" + data[i].gender + "</td>");
@@ -117,7 +115,6 @@ $(document).ready(function () {
                     break;
 
                 case "House of Representatives":
-                    // console.log("You're searching the House of Representatives!");
                     function handleUserInput() {
                         // ABBREVIATES PARTY NAME FOR QUERY
                         if (query.party === "Democrats") {
@@ -159,7 +156,6 @@ $(document).ready(function () {
                         genderAbrv + "/"
                         + searchName;
                     $.get(queryString, function (data) {
-                        // console.log(data)
                         $("#table").empty();
                         newRow = $("<tr>");
                         newRow.append("<th>Name</th>");
@@ -168,40 +164,37 @@ $(document).ready(function () {
                         newRow.append("<th>Party</th>");
                         newRow.append("<th>Gender</th>");
                         $("#table").append(newRow);
-                        // console.log(newRow);
                         for (let i = 0; i < data.length; i++) {
                             dataRow = $("<tr class=rep>");
-                            dataRow.append("<td id=" + data[i].fecId + ">" + data[i].name + "</td>");
+                            dataRow.append("<td class='name' id=" + data[i].fecId + ">" + data[i].name + "</td>");
                             dataRow.append("<td>" + data[i].state + "</td>");
                             dataRow.append("<td>" + data[i].district + "</td>");
                             dataRow.append("<td>" + data[i].party + "</td>");
                             dataRow.append("<td>" + data[i].gender + "</td>");
-                            // console.log(dataRow);
                             $("#table").append(dataRow);
                         }
                     })
             }
         };
     })
-///
-loadSenator = event => {
-    let query= "/api/senatorprofile/"+event.target.id;
-    window.location=query;
-}
-loadRep = event => {
-    let query = "/api/representativeprofile/"+event.target.id;
-    window.location=query;
-}
-//
+    ///
+    loadSenator = event => {
+        let query = "/api/senatorprofile/" + event.target.id;
+        window.location = query;
+    }
+    loadRep = event => {
+        let query = "/api/representativeprofile/" + event.target.id;
+        window.location = query;
+    }
     /////////handle table clicks////////
 
     loadSenator = event => {
-        let query= "/api/senatorprofile/"+event.target.id;
-        window.location=query;
+        let query = "/api/senatorprofile/" + event.target.id;
+        window.location = query;
     }
     loadRep = event => {
-        let query = "/api/representativeprofile/"+event.target.id;
-        window.location=query;
+        let query = "/api/representativeprofile/" + event.target.id;
+        window.location = query;
     }
     $(document).on("click", ".member", loadSenator);
     $(document).on("click", ".rep", loadRep)
@@ -223,7 +216,6 @@ loadRep = event => {
     addCredential = (data) => {
 
         $.post("/api/addcredential", data).then(res => {
-            // window.location.reload();
         })
         document.location.reload();
     }

@@ -4,10 +4,13 @@
 .house{
     float:right;
 }
-
+#manip{
+    width: 70%;
+}
 #table{
-    width:60%;
+    width:fit-content;
     font-size: large;
+    margin: auto;
 }
 #senators{
     width:100%;
@@ -17,13 +20,42 @@
 #reps{
     width:100%;
     font-size: large;
-
+}
+.navbar{
+background-color: #F1EBFA !important;
 }
 .jumbotron{
     overflow: auto;
+    background-color: #bccad6 !important;
 }
 th, td {
     padding: 15px;
     text-align: left;
-    border-bottom:1px dotted black;
   }
+.name:hover {
+      background-color: #B58BB0;
+  }
+.info{
+    width: fit-content;
+    margin-top: 10px;
+    margin: auto;
+    padding: 15px;
+}
+ul{
+    padding-inline-start: 0px;
+
+}
+.nav-item{
+    color: black !important;
+
+}
+body{
+    background-color: #8d9db6 !important;
+    height: 100vh;
+}
+button{
+    border-radius: 2px;
+    border: 2px solid black !important;
+    background-color: #B58BB0 !important;
+    color: black !important;
+}

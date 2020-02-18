@@ -1,5 +1,3 @@
-// var db = require("../models");
-
 var path = require("path");
 
 // var loadedTables = false;

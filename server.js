@@ -25,24 +25,26 @@ app.use(function(req, res, next) {
 // end innerware
 
 var db = require("./models");
-///routes variable and sequelize???
 
 
 
-////
+
+////Routes
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 
 db.sequelize.sync().then(function () {
+
+  //comment in if it is your first time installing 
   // comment out to prevent table pop each time when running
   
   //Get all senators. If response is empty we need to populate tables
-  db.Senator.findAll({}).then(function (res) {
-    if (res.length === 0) {
-      require("./db/populateDB")();
-    }
-  });
+  // db.Senator.findAll({}).then(function (res) {
+  //   if (res.length === 0) {
+  //     require("./db/populateDB")();
+  //   }
+  // });
 
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
