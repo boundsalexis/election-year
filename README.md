@@ -8,13 +8,16 @@ Election Year informs users about their congressional representatives and their 
 
 ![Site](public/assets/img/searchfunct.gif)
 
+2. Graph Demo
 
-2. Profile Demo
+![Site](public/assets/img/electiongraph.gif)
+
+3. Profile Demo
 
 ![Site](public/assets/img/login.gif)
 
 
-3. Database population
+4. Database population
 
 ![Site](public/assets/img/db.gif)
 
