@@ -149,7 +149,7 @@ module.exports = function (sequelize, DataTypes) {
 
 ## Authors
 
- * **Alexis Bounds**
+ * **Alexis Bounds** Alexis Alexis
     - [Portfolio](https://alexisboundsportfolio.herokuapp.com)
     - [GitHub](https://github.com/boundsalexis) 
     - [LinkedIn](https://www.linkedin.com/in/boundsalexis/)
