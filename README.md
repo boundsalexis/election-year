@@ -2,6 +2,11 @@
 
 Election Year informs users about their congressional representatives and their campaign finance donation history.
 
+## Deployment
+- [Link to live site](https://electionyear2020.herokuapp.com/)
+- [Link to site repository](https://github.com/boundsalexis/election-year)
+
+
 ## Site Pictures
 
 1. Search Functionality
@@ -125,6 +130,11 @@ module.exports = function (sequelize, DataTypes) {
 ```
 * Handlebars makes HTML more flexible by giving us the ability to work with objects. This handlebar takes care of displaying the user data passed on from the server-side. Not only does it display the logged-in user's name and location, it also hides user data such as user id inside the HTML. This allows for the user to feel a more personalized experience and for the developer to have easy access to commonly needed user data.
 
+## Installation
+1. Clone repository
+2. npm install
+3. npm start
+
 ## Built With
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -140,6 +150,7 @@ module.exports = function (sequelize, DataTypes) {
 ## Authors
 
  * **Alexis Bounds**
+    - [Portfolio](https://alexisboundsportfolio.herokuapp.com)
     - [GitHub](https://github.com/boundsalexis) 
     - [LinkedIn](https://www.linkedin.com/in/boundsalexis/)
 
@@ -151,11 +162,6 @@ module.exports = function (sequelize, DataTypes) {
     - [GitHub](https://github.com/kqarlos)
     - [LinkedIn](https://www.linkedin.com/in/carlos-toledo415/)
 
-## Github Links
 
-- [Link to site repository](https://github.com/boundsalexis/election-year)
-- [Alexis Bounds](https://github.com/boundsalexis)
-- [Ian Toy](https://github.com/ietoy)
-- [Carlos Toledo](https://www.github.com/kqarlos)
 
 
