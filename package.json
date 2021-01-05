@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/boundsalexis/tinfoil-hat#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.3",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
